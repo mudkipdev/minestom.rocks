@@ -59,5 +59,20 @@ export const data: Category[] = [
                 link: "https://github.com/emortalmc"
             }
         ]
+    },
+    {
+        title: "Resources",
+        items: [
+            {
+                name: "Minestom Wiki",
+                description: "The official documentation.",
+                link: "https://minestom.net/docs/introduction"
+            },
+            {
+                name: "Kody Simpson's videos",
+                description: "A great guide to introduce beginners to Minestom development.",
+                link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf"
+            }
+        ]
     }
 ];
