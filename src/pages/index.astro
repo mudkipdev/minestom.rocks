@@ -3,7 +3,13 @@ import Page from "@layouts/Page.astro";
 import { data } from "../data";
 ---
 <Page title="Awesome Minestom">
-    {data.map(category => (
+    <Fragment slot="meta">
+        <meta name="theme-color" content="#FF6C32" />
+        <meta property="og:description" content="minestom.rocks" />
+        <meta property="og:description" content="A collection of awesome Minestom resources." />
+    </Fragment>
+
+{data.map(category => (
         <section>
             <h2>{category.title}</h2>
             <ul>
