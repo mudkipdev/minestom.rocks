@@ -90,8 +90,8 @@ export const data: Category[] = [
             },
             {
                 name: "Endercube",
-                description: "https://github.com/Ender-Cube/Endercube",
-                link: "A parkour server with simple code that is easy to learn from."
+                description: "A parkour server with simple code that is easy to learn from.",
+                link: "https://github.com/Ender-Cube/Endercube"
             },
             {
                 name: "BlueDragon",
