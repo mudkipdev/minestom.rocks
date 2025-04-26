@@ -10,6 +10,7 @@ interface Category {
 }
 
 export const data: Category[] = [
+    // Libraries which you can import and use in your Minestom server
     {
         title: "Libraries",
         items: [
@@ -70,6 +71,8 @@ export const data: Category[] = [
             }
         ]
     },
+
+    // Publicly hosted servers which primarily use Minestom
     {
         title: "Servers",
         items: [
@@ -95,6 +98,8 @@ export const data: Category[] = [
             }
         ]
     },
+
+    // Tutorials, guides, or anything that is helpful for Minestom development
     {
         title: "Resources",
         items: [
@@ -115,6 +120,8 @@ export const data: Category[] = [
             }
         ]
     },
+
+    // Things that don't belong into any of the other categories, such as servers which are not hosted publicly
     {
         title: "Miscellaneous",
         items: [
@@ -132,6 +139,11 @@ export const data: Category[] = [
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
                 link: "https://github.com/emortaldev/BlockPhysics"
+            },
+            {
+                name: "minestom-version-cli",
+                description: "Check the latest Minestom commit in your terminal.",
+                link: "https://github.com/cosrnic/minestom-version-cli"
             }
         ]
     }
