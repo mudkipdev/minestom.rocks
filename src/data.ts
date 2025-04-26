@@ -52,6 +52,21 @@ export const data: Category[] = [
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
                 link: "https://github.com/bladehuntmc/KotStom"
+            },
+            {
+                name: "LuckPerms",
+                description: "A Minestom port of the popular permissions plugin.",
+                link: "https://github.com/LooFifteen/LuckPerms"
+            },
+            {
+                name: "Simple Voice Chat",
+                description: "A Minestom port of the popular voice chat mod.",
+                link: "https://github.com/LooFifteen/simple-voice-chat-minestom"
+            },
+            {
+                name: "Terra",
+                description: "A popular world generation plugin which supports Minestom.",
+                link: "https://github.com/PolyhedralDev/Terra"
             }
         ]
     },
@@ -67,6 +82,21 @@ export const data: Category[] = [
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc"
+            },
+            {
+                name: "Hypixel Skyblock",
+                description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
+                link: "https://github.com/Swofty-Developments/HypixelSkyBlock"
+            },
+            {
+                name: "Endercube",
+                description: "https://github.com/Ender-Cube/Endercube",
+                link: "A parkour server with simple code that is easy to learn from."
+            },
+            {
+                name: "BlueDragon",
+                description: "A minigame server that strives to produce high-quality original content.",
+                link: "https://bluedragonmc.com"
             }
         ]
     },
@@ -82,6 +112,26 @@ export const data: Category[] = [
                 name: "Kody Simpson's videos",
                 description: "A great guide to introduce beginners to Minestom development.",
                 link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf"
+            }
+        ]
+    },
+    {
+        title: "Miscellaneous",
+        items: [
+            {
+                name: "CRAFT-8",
+                description: "A recreation of PICO-8 in Minestom using maps.",
+                link: "https://github.com/miberss/CRAFT-8"
+            },
+            {
+                name: "BlockPhysics",
+                description: "A Minecraft physics playground powered by display entities.",
+                link: "https://github.com/emortaldev/BlockPhysics"
+            },
+            {
+                name: "PlaybackPlayer.java",
+                description: "A widely shared gist used to implement fake player NPCs.",
+                link: "https://gist.github.com/mworzala/2c5da51204c45c70db771d0ce7fe9412"
             }
         ]
     }
