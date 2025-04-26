@@ -1,0 +1,12 @@
+dist/
+.astro/
+node_modules/
+.env
+.env.production
+.DS_Store
+.idea/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
