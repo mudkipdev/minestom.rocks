@@ -119,7 +119,7 @@ export const data: Category[] = [
         title: "Miscellaneous",
         items: [
             {
-                name: "Hypixel Skyblock",
+                name: "Swofty's Skyblock",
                 description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
                 link: "https://github.com/Swofty-Developments/HypixelSkyBlock"
             },
