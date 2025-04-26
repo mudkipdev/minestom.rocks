@@ -18,7 +18,8 @@ a, a:visited {
 }
 
 #footer, #footer a {
-    margin: 16px 0;
+    margin-top: 1em;
+    margin-bottom: 2em;
     color: #555555;
 }
 
