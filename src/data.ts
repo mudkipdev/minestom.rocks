@@ -39,6 +39,16 @@ export const data: Category[] = [
                 link: "https://github.com/AtlasEngineCa/AtlasProjectiles"
             },
             {
+                name: "Trove",
+                description: "A vanilla loot table parser and evaluator.",
+                link: "https://github.com/GoldenStack/trove"
+            },
+            {
+                name: "Window",
+                description: "A useful API for dealing with inventories.",
+                link: "https://github.com/GoldenStack/window"
+            },
+            {
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
                 link: "https://github.com/bladehuntmc/KotStom"
