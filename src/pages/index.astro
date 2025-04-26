@@ -1,31 +1,22 @@
 ---
-import "../style.css";
+import Page from "@layouts/Page.astro";
 import { data } from "../data";
 ---
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="icon" href="https://minestom.net/favicon.ico" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Awesome Minestom</title>
-    </head>
+<Page title="Awesome Minestom">
+    {data.map(category => (
+        <section>
+            <h2>{category.title}</h2>
+            <ul>
+                {category.items.map(item => (
+                    <li><a
+                        href={item.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >{item.name}</a> - {item.description}</li>
+                ))}
+            </ul>
+        </section>
+    ))}
 
-    <body>
-        {data.map(category => (
-            <section>
-                <h2>{category.title}</h2>
-                <ul>
-                    {category.items.map(item => (
-                        <li><a
-                            href={item.link}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >{item.name}</a> - {item.description}</li>
-                    ))}
-                </ul>
-            </section>
-        ))}
-
-        <p id="footer">made by <a href="https://mudkip.dev">mudkip</a></p>
-    </body>
-</html>
+    <p id="footer">made by <a href="https://mudkip.dev">mudkip</a></p>
+</Page>
