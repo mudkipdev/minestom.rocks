@@ -84,11 +84,6 @@ export const data: Category[] = [
                 link: "https://github.com/emortalmc"
             },
             {
-                name: "Hypixel Skyblock",
-                description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
-                link: "https://github.com/Swofty-Developments/HypixelSkyBlock"
-            },
-            {
                 name: "Endercube",
                 description: "A parkour server with simple code that is easy to learn from.",
                 link: "https://github.com/Ender-Cube/Endercube"
@@ -112,12 +107,22 @@ export const data: Category[] = [
                 name: "Kody Simpson's videos",
                 description: "A great guide to introduce beginners to Minestom development.",
                 link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf"
+            },
+            {
+                name: "PlaybackPlayer.java",
+                description: "A widely shared gist used to implement fake player NPCs.",
+                link: "https://gist.github.com/mworzala/2c5da51204c45c70db771d0ce7fe9412"
             }
         ]
     },
     {
         title: "Miscellaneous",
         items: [
+            {
+                name: "Hypixel Skyblock",
+                description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
+                link: "https://github.com/Swofty-Developments/HypixelSkyBlock"
+            },
             {
                 name: "CRAFT-8",
                 description: "A recreation of PICO-8 in Minestom using maps.",
@@ -127,11 +132,6 @@ export const data: Category[] = [
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
                 link: "https://github.com/emortaldev/BlockPhysics"
-            },
-            {
-                name: "PlaybackPlayer.java",
-                description: "A widely shared gist used to implement fake player NPCs.",
-                link: "https://gist.github.com/mworzala/2c5da51204c45c70db771d0ce7fe9412"
             }
         ]
     }
