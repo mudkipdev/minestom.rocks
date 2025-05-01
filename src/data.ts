@@ -87,14 +87,24 @@ export const data: Category[] = [
                 link: "https://github.com/emortalmc"
             },
             {
-                name: "Endercube",
-                description: "A parkour server with simple code that is easy to learn from.",
-                link: "https://github.com/Ender-Cube/Endercube"
+                name: "CounterMine",
+                description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
+                link: "https://cherry.pizza"
             },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com"
+            },
+            {
+                name: "McWar.io",
+                description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
+                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I"
+            },
+            {
+                name: "Endercube",
+                description: "A parkour server with simple code that is easy to learn from.",
+                link: "https://github.com/Ender-Cube/Endercube"
             }
         ]
     },
