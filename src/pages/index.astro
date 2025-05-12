@@ -1,6 +1,6 @@
 ---
 import Page from "@layouts/Page.astro";
-import { data, supportsLatestVersion } from "../data";
+import { data, latestVersion, supportsLatestVersion } from "../data";
 ---
 <Page title="Awesome Minestom">
     <Fragment slot="meta">
@@ -12,7 +12,7 @@ import { data, supportsLatestVersion } from "../data";
     <div id="header">
         <label>
             <input type="checkbox" id="filter-latest" />
-            Show 1.21.5 projects only
+            Show {latestVersion} projects only
         </label>
     </div>
 

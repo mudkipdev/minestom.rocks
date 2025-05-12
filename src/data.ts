@@ -10,9 +10,9 @@ interface Category {
     items: Item[];
 }
 
-export function supportsLatestVersion(item: Item): boolean {
-    return item.version === "1.21.5" || !item.version;
-}
+export const latestVersion = "1.21.5";
+export const supportsLatestVersion = (item: Item): boolean =>
+    item.version === latestVersion || !item.version;
 
 export const data: Category[] = [
     // Libraries which you can import and use in your Minestom server
