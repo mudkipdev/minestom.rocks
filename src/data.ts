@@ -2,11 +2,16 @@ interface Item {
     name: string;
     description: string;
     link: string;
+    version?: `1.${number}` | `1.${number}.${number}`;
 }
 
 interface Category {
     title: string;
     items: Item[];
+}
+
+export function supportsLatestVersion(item: Item): boolean {
+    return item.version === "1.21.5" || !item.version;
 }
 
 export const data: Category[] = [
@@ -17,57 +22,68 @@ export const data: Category[] = [
             {
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
-                link: "https://github.com/TogAr2/MinestomPvP"
+                link: "https://github.com/TogAr2/MinestomPvP",
+                version: "1.21.4"
             },
             {
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
-                link: "https://github.com/hollow-cube/polar"
+                link: "https://github.com/hollow-cube/polar",
+                version: "1.21.5"
             },
             {
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
-                link: "https://github.com/hollow-cube/schem"
+                link: "https://github.com/hollow-cube/schem",
+                version: "1.21.3"
             },
             {
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
-                link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine"
+                link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
+                version: "1.21.4"
             },
             {
                 name: "AtlasProjectiles",
                 description: "Implementations for arrows, fireballs, snowballs, and more.",
-                link: "https://github.com/AtlasEngineCa/AtlasProjectiles"
+                link: "https://github.com/AtlasEngineCa/AtlasProjectiles",
+                version: "1.21.3"
             },
             {
                 name: "Trove",
                 description: "A vanilla loot table parser and evaluator.",
-                link: "https://github.com/GoldenStack/trove"
+                link: "https://github.com/GoldenStack/trove",
+                version: "1.21.1"
             },
             {
                 name: "Window",
                 description: "A useful API for dealing with inventories.",
-                link: "https://github.com/GoldenStack/window"
+                link: "https://github.com/GoldenStack/window",
+                version: "1.21.4"
             },
             {
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
-                link: "https://github.com/bladehuntmc/KotStom"
+                link: "https://github.com/bladehuntmc/KotStom",
+                version: "1.21.4"
             },
             {
                 name: "LuckPerms",
                 description: "A Minestom port of the popular permissions plugin.",
-                link: "https://github.com/LooFifteen/LuckPerms"
+                link: "https://github.com/LooFifteen/LuckPerms",
+                version: "1.21.4"
             },
             {
                 name: "Simple Voice Chat",
                 description: "A Minestom port of the popular voice chat mod.",
-                link: "https://github.com/LooFifteen/simple-voice-chat-minestom"
+                link: "https://github.com/LooFifteen/simple-voice-chat-minestom",
+                version: "1.21.3"
             },
             {
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
-                link: "https://github.com/PolyhedralDev/Terra"
+                link: "https://github.com/PolyhedralDev/Terra",
+                version: "1.21.4"
             }
         ]
     },
@@ -79,32 +95,44 @@ export const data: Category[] = [
             {
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
-                link: "https://hollowcube.net"
+                link: "https://hollowcube.net",
+                version: "1.21.5"
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
-                link: "https://github.com/emortalmc"
+                link: "https://github.com/emortalmc",
+                version: "1.21.5"
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
-                link: "https://cherry.pizza"
+                link: "https://cherry.pizza",
+                version: "1.21.4"
+            },
+            {
+                name: "kloon.io",
+                description: "A creative server developed by Minikloon featuring powerful building tools.",
+                link: "https://kloon.io",
+                version: "1.21.1"
             },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
-                link: "https://bluedragonmc.com"
+                link: "https://bluedragonmc.com",
+                version: "1.21.5"
             },
             {
                 name: "McWar.io",
                 description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
-                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I"
+                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I",
+                version: "1.21.1"
             },
             {
                 name: "Endercube",
                 description: "A parkour server with simple code that is easy to learn from.",
-                link: "https://github.com/Ender-Cube/Endercube"
+                link: "https://github.com/Ender-Cube/Endercube",
+                version: "1.21.4"
             }
         ]
     },
@@ -138,17 +166,20 @@ export const data: Category[] = [
             {
                 name: "Swofty's Skyblock",
                 description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
-                link: "https://github.com/Swofty-Developments/HypixelSkyBlock"
+                link: "https://github.com/Swofty-Developments/HypixelSkyBlock",
+                version: "1.21.4"
             },
             {
                 name: "CRAFT-8",
                 description: "A recreation of PICO-8 in Minestom using maps.",
-                link: "https://github.com/miberss/CRAFT-8"
+                link: "https://github.com/miberss/CRAFT-8",
+                version: "1.21.4"
             },
             {
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
-                link: "https://github.com/emortaldev/BlockPhysics"
+                link: "https://github.com/emortaldev/BlockPhysics",
+                version: "1.21.4"
             },
             {
                 name: "minestom-version-cli",

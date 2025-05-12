@@ -17,6 +17,14 @@ a, a:visited {
     color: #0000EE;
 }
 
+#header {
+    margin-bottom: 1em;
+}
+
+input[type="checkbox"] {
+    margin-right: 8px;
+}
+
 #footer, #footer a {
     margin-top: 1em;
     margin-bottom: 2em;

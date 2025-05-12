@@ -1,6 +1,6 @@
 ---
 import Page from "@layouts/Page.astro";
-import { data } from "../data";
+import { data, supportsLatestVersion } from "../data";
 ---
 <Page title="Awesome Minestom">
     <Fragment slot="meta">
@@ -9,20 +9,52 @@ import { data } from "../data";
         <meta property="og:description" content="A collection of awesome Minestom resources." />
     </Fragment>
 
-{data.map(category => (
-        <section>
+    <div id="header">
+        <label>
+            <input type="checkbox" id="filter-latest" />
+            Show 1.21.5 projects only
+        </label>
+    </div>
+
+    {data.map((category, index) => (
+        <section data-category-index={index}>
             <h2>{category.title}</h2>
             <ul>
-                {category.items.map(item => (
-                    <li><a
-                        href={item.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >{item.name}</a> - {item.description}</li>
+                {category.items.map((item, itemIndex) => (
+                    <li
+                        data-item-index={itemIndex}
+                        data-supports-latest={supportsLatestVersion(item)}
+                    >
+                        <a href={item.link} target="_blank" rel="noopener noreferrer">
+                            {item.name}
+                        </a> - {item.description}
+                    </li>
                 ))}
             </ul>
         </section>
     ))}
 
     <p id="footer">Made by <a href="https://mudkip.dev">mudkip</a>, star it on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub.</a></p>
+
+    <script type="module">
+        const checkbox = document.querySelector("#filter-latest");
+        const sections = document.querySelectorAll("section");
+
+        checkbox.addEventListener("change", () => {
+            const filtering = checkbox.checked;
+
+            sections.forEach(section => {
+                const items = section.querySelectorAll("li");
+                let visibleCount = 0;
+
+                items.forEach(item => {
+                    const supported = item.getAttribute("data-supports-latest") === "true";
+                    item.style.display = (!filtering || supported) ? "" : "none";
+                    if (!filtering || supported) visibleCount++;
+                });
+
+                section.style.display = visibleCount > 0 ? "" : "none";
+            });
+        });
+    </script>
 </Page>
