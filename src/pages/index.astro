@@ -27,7 +27,7 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
                     >
                         <a href={item.link} target="_blank" rel="noopener noreferrer">
                             {item.name}
-                        </a> - {item.description}
+                        </a> - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
                     </li>
                 ))}
             </ul>
@@ -41,16 +41,14 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
         const sections = document.querySelectorAll("section");
 
         checkbox.addEventListener("change", () => {
-            const filtering = checkbox.checked;
-
             sections.forEach(section => {
                 const items = section.querySelectorAll("li");
                 let visibleCount = 0;
 
                 items.forEach(item => {
                     const supported = item.getAttribute("data-supports-latest") === "true";
-                    item.style.display = (!filtering || supported) ? "" : "none";
-                    if (!filtering || supported) visibleCount++;
+                    item.style.display = (!checkbox.checked || supported) ? "" : "none";
+                    if (!checkbox.checked || supported) visibleCount++;
                 });
 
                 section.style.display = visibleCount > 0 ? "" : "none";

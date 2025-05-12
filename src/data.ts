@@ -189,3 +189,11 @@ export const data: Category[] = [
         ]
     }
 ];
+
+data.forEach((category) => {
+    category.items.sort((left, right) => {
+        if (!left.version) return 1;
+        if (!right.version) return -1;
+        return left.version > right.version ? -1 : left.version < right.version ? 1 : 0;
+    });
+});
