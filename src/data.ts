@@ -114,7 +114,7 @@ export const data: Category[] = [
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
-                version: "1.21.1"
+                version: "1.21.3"
             },
             {
                 name: "BlueDragon",
