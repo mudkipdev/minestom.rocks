@@ -15,6 +15,55 @@ export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
 export const data: Category[] = [
+    // Publicly hosted servers which primarily use Minestom
+    {
+        title: "Servers",
+        items: [
+            {
+                name: "Hollow Cube",
+                description: "Play, create, share builds and parkour maps, all on one server!",
+                link: "https://hollowcube.net",
+                version: "1.21.5"
+            },
+            {
+                name: "EmortalMC",
+                description: "A minigame network powered by Minestom with lots of overengineering.",
+                link: "https://github.com/emortalmc",
+                version: "1.21.5"
+            },
+            {
+                name: "CounterMine",
+                description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
+                link: "https://cherry.pizza",
+                version: "1.21.4"
+            },
+            {
+                name: "kloon.io",
+                description: "A creative server developed by Minikloon featuring powerful building tools.",
+                link: "https://kloon.io",
+                version: "1.21.3"
+            },
+            {
+                name: "BlueDragon",
+                description: "A minigame server that strives to produce high-quality original content.",
+                link: "https://bluedragonmc.com",
+                version: "1.21.5"
+            },
+            {
+                name: "McWar.io",
+                description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
+                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I",
+                version: "1.21.1"
+            },
+            {
+                name: "Endercube",
+                description: "A parkour server with simple code that is easy to learn from.",
+                link: "https://github.com/Ender-Cube/Endercube",
+                version: "1.21.4"
+            }
+        ]
+    },
+
     // Libraries which you can import and use in your Minestom server
     {
         title: "Libraries",
@@ -83,55 +132,6 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.4"
-            }
-        ]
-    },
-
-    // Publicly hosted servers which primarily use Minestom
-    {
-        title: "Servers",
-        items: [
-            {
-                name: "Hollow Cube",
-                description: "Play, create, share builds and parkour maps, all on one server!",
-                link: "https://hollowcube.net",
-                version: "1.21.5"
-            },
-            {
-                name: "EmortalMC",
-                description: "A minigame network powered by Minestom with lots of overengineering.",
-                link: "https://github.com/emortalmc",
-                version: "1.21.5"
-            },
-            {
-                name: "CounterMine",
-                description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
-                link: "https://cherry.pizza",
-                version: "1.21.4"
-            },
-            {
-                name: "kloon.io",
-                description: "A creative server developed by Minikloon featuring powerful building tools.",
-                link: "https://kloon.io",
-                version: "1.21.3"
-            },
-            {
-                name: "BlueDragon",
-                description: "A minigame server that strives to produce high-quality original content.",
-                link: "https://bluedragonmc.com",
-                version: "1.21.5"
-            },
-            {
-                name: "McWar.io",
-                description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
-                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I",
-                version: "1.21.1"
-            },
-            {
-                name: "Endercube",
-                description: "A parkour server with simple code that is easy to learn from.",
-                link: "https://github.com/Ender-Cube/Endercube",
                 version: "1.21.4"
             }
         ]
