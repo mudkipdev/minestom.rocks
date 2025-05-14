@@ -58,22 +58,20 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
 </script>
 
 <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        if (Math.random() >= 0.01) {
-            return;
-        }
+    if (Math.random() >= 0.01) {
+        return;
+    }
 
-        document.title = document.title.replace("Minestom", "Minestorm");
-        document.querySelectorAll("li").forEach(replaceTextInNode);
-
-        function replaceTextInNode(node: Node) {
-            if (node.nodeType === Node.TEXT_NODE && node.textContent != null) {
-                node.textContent = node.textContent
-                    .replace("Minestom", "Minestorm")
-                    .replace("minestom", "minestorm");
-            } else if (node.nodeType === Node.ELEMENT_NODE) {
-                node.childNodes.forEach(replaceTextInNode);
-            }
+    function replaceTextInNode(node: Node) {
+        if (node.nodeType === Node.TEXT_NODE && node.textContent != null) {
+            node.textContent = node.textContent
+                .replace("Minestom", "Minestorm")
+                .replace("minestom", "minestorm");
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+            node.childNodes.forEach(replaceTextInNode);
         }
-    });
+    }
+
+    document.title = document.title.replace("Minestom", "Minestorm");
+    document.querySelectorAll("li").forEach(replaceTextInNode);
 </script>
