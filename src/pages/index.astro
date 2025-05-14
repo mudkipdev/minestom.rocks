@@ -35,24 +35,45 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
     ))}
 
     <p id="footer">Made by <a href="https://mudkip.dev">mudkip</a>, star it on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub.</a></p>
-
-    <script type="module">
-        const checkbox = document.querySelector("#filter-latest");
-        const sections = document.querySelectorAll("section");
-
-        checkbox.addEventListener("change", () => {
-            sections.forEach(section => {
-                const items = section.querySelectorAll("li");
-                let visibleCount = 0;
-
-                items.forEach(item => {
-                    const supported = item.getAttribute("data-supports-latest") === "true";
-                    item.style.display = (!checkbox.checked || supported) ? "" : "none";
-                    if (!checkbox.checked || supported) visibleCount++;
-                });
-
-                section.style.display = visibleCount > 0 ? "" : "none";
-            });
-        });
-    </script>
 </Page>
+
+<script>
+    const checkbox = document.querySelector("#filter-latest") as HTMLInputElement;
+    const sections = document.querySelectorAll("section");
+
+    checkbox.addEventListener("change", () => {
+        sections.forEach(section => {
+            const items = section.querySelectorAll("li");
+            let visibleCount = 0;
+
+            items.forEach(item => {
+                const supported = item.getAttribute("data-supports-latest") === "true";
+                item.style.display = (!checkbox.checked || supported) ? "" : "none";
+                if (!checkbox.checked || supported) visibleCount++;
+            });
+
+            section.style.display = visibleCount > 0 ? "" : "none";
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        if (Math.random() >= 0.01) {
+            return;
+        }
+
+        document.title = document.title.replace("Minestom", "Minestorm");
+        document.querySelectorAll("li").forEach(replaceTextInNode);
+
+        function replaceTextInNode(node: Node) {
+            if (node.nodeType === Node.TEXT_NODE && node.textContent != null) {
+                node.textContent = node.textContent
+                    .replace("Minestom", "Minestorm")
+                    .replace("minestom", "minestorm");
+            } else if (node.nodeType === Node.ELEMENT_NODE) {
+                node.childNodes.forEach(replaceTextInNode);
+            }
+        }
+    });
+</script>
