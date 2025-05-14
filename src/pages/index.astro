@@ -58,10 +58,6 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
 </script>
 
 <script>
-    if (Math.random() >= 0.01) {
-        return;
-    }
-
     function replaceTextInNode(node: Node) {
         if (node.nodeType === Node.TEXT_NODE && node.textContent != null) {
             node.textContent = node.textContent
@@ -72,6 +68,8 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
         }
     }
 
-    document.title = document.title.replace("Minestom", "Minestorm");
-    document.querySelectorAll("li").forEach(replaceTextInNode);
+    if (Math.random() < 0.01) {
+        document.title = document.title.replace("Minestom", "Minestorm");
+        document.querySelectorAll("li").forEach(replaceTextInNode);
+    }
 </script>
