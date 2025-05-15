@@ -123,6 +123,12 @@ export const data: Category[] = [
                 version: "1.21.4"
             },
             {
+                name: "Spark",
+                description: "A Minestom port of the popular Minecraft profiler.",
+                link: "https://github.com/LooFifteen/spark",
+                version: "1.21.4"
+            },
+            {
                 name: "Simple Voice Chat",
                 description: "A Minestom port of the popular voice chat mod.",
                 link: "https://github.com/LooFifteen/simple-voice-chat-minestom",
