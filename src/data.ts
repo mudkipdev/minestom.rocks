@@ -102,7 +102,7 @@ export const data: Category[] = [
                 name: "Trove",
                 description: "A vanilla loot table parser and evaluator.",
                 link: "https://github.com/GoldenStack/trove",
-                version: "1.21.1"
+                version: "1.21.5"
             },
             {
                 name: "Window",
