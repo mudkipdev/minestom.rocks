@@ -120,7 +120,7 @@ export const data: Category[] = [
                 name: "LuckPerms",
                 description: "A Minestom port of the popular permissions plugin.",
                 link: "https://github.com/LooFifteen/LuckPerms",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "Spark",
