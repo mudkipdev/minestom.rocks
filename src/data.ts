@@ -189,7 +189,7 @@ export const data: Category[] = [
             },
             {
                 name: "minestom-version-cli",
-                description: "Check the latest Minestom commit in your terminal.",
+                description: "Check the latest Minestom commit from your terminal.",
                 link: "https://github.com/cosrnic/minestom-version-cli"
             }
         ]
