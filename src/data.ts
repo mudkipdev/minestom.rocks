@@ -153,6 +153,11 @@ export const data: Category[] = [
                 link: "https://minestom.net/docs/introduction"
             },
             {
+                name: "Minestom Javadoc",
+                description: "The official API reference.",
+                link: "https://javadoc.minestom.net"
+            },
+            {
                 name: "Kody Simpson's videos",
                 description: "A great guide to introduce beginners to Minestom development.",
                 link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf"
