@@ -90,7 +90,7 @@ export const data: Category[] = [
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
                 link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "AtlasProjectiles",
@@ -196,7 +196,7 @@ export const data: Category[] = [
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
                 link: "https://github.com/emortaldev/BlockPhysics",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "minestom-version-cli",
