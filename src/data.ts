@@ -84,7 +84,7 @@ export const data: Category[] = [
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.3"
+                version: "1.21.4"
             },
             {
                 name: "WorldSeedEntityEngine",
@@ -96,7 +96,7 @@ export const data: Category[] = [
                 name: "AtlasProjectiles",
                 description: "Implementations for arrows, fireballs, snowballs, and more.",
                 link: "https://github.com/AtlasEngineCa/AtlasProjectiles",
-                version: "1.21.3"
+                version: "1.21.4"
             },
             {
                 name: "Trove",
