@@ -10,7 +10,7 @@ interface Category {
     items: Item[];
 }
 
-export const latestVersion = "1.21.5";
+export const latestVersion = "1.21.6";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
