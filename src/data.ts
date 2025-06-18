@@ -96,7 +96,7 @@ export const data: Category[] = [
                 name: "AtlasProjectiles",
                 description: "Implementations for arrows, fireballs, snowballs, and more.",
                 link: "https://github.com/AtlasEngineCa/AtlasProjectiles",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "Trove",
