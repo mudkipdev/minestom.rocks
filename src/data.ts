@@ -23,7 +23,7 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.5"
+                version: "1.21.6"
             },
             {
                 name: "EmortalMC",
@@ -138,7 +138,7 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.4"
+                version: "1.21.6"
             }
         ]
     },
