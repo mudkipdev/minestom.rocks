@@ -166,7 +166,8 @@ export const data: Category[] = [
             {
                 name: "Kody Simpson's videos",
                 description: "A great guide to introduce beginners to Minestom development.",
-                link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf"
+                link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf",
+                version: "1.21.1"
             },
             {
                 name: "PlaybackPlayer.java",
@@ -215,8 +216,9 @@ export const data: Category[] = [
 
 data.forEach((category) => {
     category.items.sort((left, right) => {
-        if (!left.version) return 1;
-        if (!right.version) return -1;
-        return left.version > right.version ? -1 : left.version < right.version ? 1 : 0;
+        if (!left.version && right.version) return -1;
+        if (left.version && !right.version) return 1;
+        if (!left.version && !right.version) return 0;
+        return (right.version || "").localeCompare(left.version || "");
     });
 });
