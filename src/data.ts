@@ -75,6 +75,12 @@ export const data: Category[] = [
                 version: "1.21.4"
             },
             {
+                name: "MinestomFluids",
+                description: "A library to simulate water and lava physics.",
+                link: "https://github.com/TogAr2/MinestomFluids",
+                version: "1.21.4"
+            },
+            {
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
                 link: "https://github.com/hollow-cube/polar",
