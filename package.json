@@ -2,7 +2,7 @@
     "name": "minestom-rocks",
     "type": "module",
     "version": "0.0.1",
-    "packageManager": "pnpm@10.12.2",
+    "packageManager": "pnpm@10.12.3",
     "scripts": {
         "dev": "astro dev",
         "build": "astro build",
