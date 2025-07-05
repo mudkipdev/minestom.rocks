@@ -10,7 +10,7 @@ interface Category {
     items: Item[];
 }
 
-export const latestVersion = "1.21.6";
+export const latestVersion = "1.21.7";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -23,7 +23,7 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.6"
+                version: "1.21.7"
             },
             {
                 name: "EmortalMC",
@@ -72,7 +72,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "MinestomFluids",
@@ -138,13 +138,19 @@ export const data: Category[] = [
                 name: "Simple Voice Chat",
                 description: "A Minestom port of the popular voice chat mod.",
                 link: "https://github.com/LooFifteen/simple-voice-chat-minestom",
-                version: "1.21.3"
+                version: "1.21.5"
             },
             {
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.6"
+                version: "1.21.7"
+            },
+            {
+                name: "NBStom",
+                description: "A Note Block Studio reader and player for Minestom.",
+                link: "https://github.com/emortalmc/NBStom",
+                version: "1.21.5"
             }
         ]
     },
