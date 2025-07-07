@@ -151,6 +151,12 @@ export const data: Category[] = [
                 description: "A Note Block Studio reader and player for Minestom.",
                 link: "https://github.com/emortalmc/NBStom",
                 version: "1.21.5"
+            },
+            {
+                name: "Blocks and Stuff",
+                description: "Common block and fluid implementations for Minestom.",
+                link: "https://github.com/everbuild-org/blocks-and-stuff",
+                version: "1.21.6"
             }
         ]
     },
