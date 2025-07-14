@@ -35,7 +35,7 @@ export const data: Category[] = [
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
-                version: "1.21.4"
+                version: "1.21.7"
             },
             {
                 name: "kloon.io",
