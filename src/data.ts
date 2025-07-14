@@ -72,13 +72,13 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.5"
+                version: "1.21.7"
             },
             {
                 name: "MinestomFluids",
                 description: "A library to simulate water and lava physics.",
                 link: "https://github.com/TogAr2/MinestomFluids",
-                version: "1.21.4"
+                version: "1.21.5"
             },
             {
                 name: "Polar",
