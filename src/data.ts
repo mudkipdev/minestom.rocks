@@ -10,7 +10,7 @@ interface Category {
     items: Item[];
 }
 
-export const latestVersion = "1.21.7";
+export const latestVersion = "1.21.8";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -23,19 +23,19 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "kloon.io",
@@ -72,7 +72,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "MinestomFluids",
@@ -144,13 +144,13 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "NBStom",
                 description: "A Note Block Studio reader and player for Minestom.",
                 link: "https://github.com/emortalmc/NBStom",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "Blocks and Stuff",
