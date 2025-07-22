@@ -59,7 +59,7 @@ export const data: Category[] = [
                 name: "Endercube",
                 description: "A parkour server with simple code that is easy to learn from.",
                 link: "https://github.com/Ender-Cube/Endercube",
-                version: "1.21.4"
+                version: "1.21.8"
             }
         ]
     },
@@ -72,7 +72,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.8"
+                version: "1.21.7"
             },
             {
                 name: "MinestomFluids",
@@ -90,13 +90,13 @@ export const data: Category[] = [
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.4"
+                version: "1.21.7"
             },
             {
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
                 link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
-                version: "1.21.5"
+                version: "1.21.7"
             },
             {
                 name: "AtlasProjectiles",
@@ -120,7 +120,7 @@ export const data: Category[] = [
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
                 link: "https://github.com/bladehuntmc/KotStom",
-                version: "1.21.4"
+                version: "1.21.7"
             },
             {
                 name: "LuckPerms",
@@ -144,7 +144,7 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.8"
+                version: "1.21.6"
             },
             {
                 name: "NBStom",
@@ -197,7 +197,7 @@ export const data: Category[] = [
                 name: "minestom-ca",
                 description: "Implementing vanilla Minecraft with cellular automata.",
                 link: "https://github.com/GoldenStack/minestom-ca",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "Swofty's Skyblock",
@@ -215,7 +215,7 @@ export const data: Category[] = [
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
                 link: "https://github.com/emortaldev/BlockPhysics",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "minestom-version-cli",
