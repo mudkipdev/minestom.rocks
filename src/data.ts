@@ -72,7 +72,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "MinestomFluids",
@@ -90,13 +90,13 @@ export const data: Category[] = [
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
                 link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "AtlasProjectiles",
@@ -120,7 +120,7 @@ export const data: Category[] = [
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
                 link: "https://github.com/bladehuntmc/KotStom",
-                version: "1.21.7"
+                version: "1.21.8"
             },
             {
                 name: "LuckPerms",
