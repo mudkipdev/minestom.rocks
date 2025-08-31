@@ -47,7 +47,7 @@ export const data: Category[] = [
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "McWar.io",
@@ -84,7 +84,7 @@ export const data: Category[] = [
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
                 link: "https://github.com/hollow-cube/polar",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "Schem",
@@ -114,7 +114,7 @@ export const data: Category[] = [
                 name: "Window",
                 description: "A useful API for dealing with inventories.",
                 link: "https://github.com/GoldenStack/window",
-                version: "1.21.4"
+                version: "1.21.8"
             },
             {
                 name: "KotStom",
@@ -126,7 +126,7 @@ export const data: Category[] = [
                 name: "LuckPerms",
                 description: "A Minestom port of the popular permissions plugin.",
                 link: "https://github.com/LooFifteen/LuckPerms",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "Spark",
@@ -203,7 +203,7 @@ export const data: Category[] = [
                 name: "Swofty's Skyblock",
                 description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
                 link: "https://github.com/Swofty-Developments/HypixelSkyBlock",
-                version: "1.21.4"
+                version: "1.21.8"
             },
             {
                 name: "CRAFT-8",
