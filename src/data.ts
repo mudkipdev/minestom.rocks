@@ -41,7 +41,7 @@ export const data: Category[] = [
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
-                version: "1.21.3"
+                version: "1.21.8"
             },
             {
                 name: "BlueDragon",
@@ -138,7 +138,7 @@ export const data: Category[] = [
                 name: "Simple Voice Chat",
                 description: "A Minestom port of the popular voice chat mod.",
                 link: "https://github.com/LooFifteen/simple-voice-chat-minestom",
-                version: "1.21.5"
+                version: "1.21.8"
             },
             {
                 name: "Terra",
@@ -156,7 +156,7 @@ export const data: Category[] = [
                 name: "Blocks and Stuff",
                 description: "Common block and fluid implementations for Minestom.",
                 link: "https://github.com/everbuild-org/blocks-and-stuff",
-                version: "1.21.6"
+                version: "1.21.8"
             }
         ]
     },
