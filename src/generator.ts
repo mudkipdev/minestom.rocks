@@ -64,7 +64,7 @@ export const optionalDependencies: Record<string, Dependency> = {
     }
 };
 
-export function generateGradleCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {
+export function generateKotlinCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {
     let code = "";
 
     // Plugins
@@ -89,7 +89,7 @@ export function generateGradleCode(configuration: Configuration, resolvedVersion
     if (configuration.language == "java") {
         code += `java.toolchain.languageVersion = JavaLanguageVersion.of(${javaVersion})\n`;
     } else if (configuration.language == "kotlin") {
-        code += `kotlin.jvmToolchain = ${javaVersion}\n`;
+        code += `kotlin.jvmToolchain(${javaVersion})\n`;
     }
 
     // Repositories
@@ -126,6 +126,10 @@ export function generateGradleCode(configuration: Configuration, resolvedVersion
     code += "}\n";
 
     return code;
+}
+
+export function generateGroovyCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {
+    return "";
 }
 
 export function generateMavenCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {

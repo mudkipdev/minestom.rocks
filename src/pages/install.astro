@@ -103,12 +103,19 @@ import { optionalDependencies } from "src/generator";
 </style>
 
 <script>
-    import { type Configuration, generateGradleCode, generateMavenCode, optionalDependencies, minestom } from "../generator";
+    import {
+        type Configuration,
+        generateKotlinCode,
+        generateGroovyCode,
+        generateMavenCode,
+        optionalDependencies,
+        minestom
+    } from "../generator";
 
     function generateCode(configuration: Configuration): string {
-        return configuration.dsl == "maven"
-            ? generateMavenCode(configuration, resolvedVersions)
-            : generateGradleCode(configuration, resolvedVersions);
+        if (configuration.dsl == "groovy") return generateGroovyCode(configuration, resolvedVersions);
+        if (configuration.dsl == "maven") return generateMavenCode(configuration, resolvedVersions);
+        return generateKotlinCode(configuration, resolvedVersions);
     }
 
     const codeElement = document.querySelector("#code") as HTMLPreElement;
