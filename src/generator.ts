@@ -30,7 +30,6 @@ export interface Configuration {
 }
 
 const javaVersion = "21";
-const kotlinVersion = "2.2.20";
 const shadowVersion = "9.2.1";
 
 export const minestom: Dependency = {
@@ -73,7 +72,8 @@ export function generateKotlinCode(configuration: Configuration, resolvedVersion
     if (configuration.language == "java") {
         code += " ".repeat(4) + "java\n";
     } else if (configuration.language == "kotlin") {
-        code += " ".repeat(4) + `kotlin("jvm") version "${kotlinVersion}"\n`;
+        const resolvedKotlinVersion = resolvedVersions["kotlin"] || "2.2.20";
+        code += " ".repeat(4) + `kotlin("jvm") version "${resolvedKotlinVersion}"\n`;
     }
 
     code += " ".repeat(4) + "application\n";

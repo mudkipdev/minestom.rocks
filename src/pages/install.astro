@@ -109,7 +109,8 @@ import { optionalDependencies } from "src/generator";
         generateGroovyCode,
         generateMavenCode,
         optionalDependencies,
-        minestom
+        minestom,
+        fetchLatestRelease
     } from "../generator";
 
     function generateCode(configuration: Configuration): string {
@@ -122,6 +123,13 @@ import { optionalDependencies } from "src/generator";
     let resolvedVersions: Record<string, string> = {};
 
     async function fetchVersions() {
+        try {
+            const kotlinTagName = await fetchLatestRelease("JetBrains", "kotlin");
+            resolvedVersions["kotlin"] = kotlinTagName.startsWith("v") ? kotlinTagName.substring(1) : kotlinTagName;
+        } catch (error) {
+            console.warn(`Failed to fetch version for kotlin:`, error);
+        }
+
         if (typeof minestom.version === "function") {
             try {
                 resolvedVersions[minestom.artifact] = await minestom.version();
