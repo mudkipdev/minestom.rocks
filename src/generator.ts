@@ -27,6 +27,7 @@ export interface Configuration {
     version: string;
     mainClass: string;
     dependencies: string[];
+    logger: "none" | "tinylog" | "logback" | "simple";
 }
 
 const javaVersion = "21";
@@ -123,15 +124,29 @@ export function generateKotlinCode(configuration: Configuration, resolvedVersion
         code += " ".repeat(4) + `implementation("${dependency.group}:${dependency.artifact}:${version}")\n`;
     }
 
-    code += "}\n";
+    // Logging
+    if (configuration.logger === "tinylog") {
+        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-api` + (configuration.language === "kotlin" ? "-kotlin" : "") + `:2.8.0-M1")\n`;
+        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-impl:2.8.0-M1")\n`;
+        code += " ".repeat(4) + `implementation("org.tinylog:slf4j-tinylog:2.8.0-M1")\n`;
+    } else if (configuration.logger === "logback") {
+        code += " ".repeat(4) + `implementation("ch.qos.logback:logback-classic:1.5.18")\n`;
+    } else if (configuration.logger === "simple") {
+        code += " ".repeat(4) + `implementation("org.slf4j:slf4j-simple:2.0.17")\n`;
+    }
 
+    code += "}\n";
+    code += "\n";
+    code += "tasks.withType<JavaCompile> {\n";
+    code += " ".repeat(4) + "options.encoding = \"UTF-8\"\n";
+    code += "}\n";
     return code;
 }
 
 export function generateGroovyCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {
-    return "";
+    return "Gradle (Groovy) support is coming soon";
 }
 
 export function generateMavenCode(configuration: Configuration, resolvedVersions: Record<string, string>): string {
-    return "";
+    return "Maven support is coming soon";
 }

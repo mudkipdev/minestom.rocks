@@ -46,6 +46,24 @@ import { optionalDependencies } from "src/generator";
                         <label for={key}>{dependency.name}</label>
                     </div>
                 ))}
+
+                <p>Logger</p>
+                <div>
+                    <input type="radio" name="logger" value="none" checked>
+                    <label for="none">None</label>
+                </div>
+                <div>
+                    <input type="radio" name="logger" value="tinylog">
+                    <label for="tinylog">TinyLog</label>
+                </div>
+                <div>
+                    <input type="radio" name="logger" value="logback">
+                    <label for="logback">Logback</label>
+                </div>
+                <div>
+                    <input type="radio" name="logger" value="simple">
+                    <label for="simple">Simple</label>
+                </div>
             </form>
         </div>
         <div id="right">
@@ -159,6 +177,7 @@ import { optionalDependencies } from "src/generator";
         const versionElement = form.querySelector(`input[name="version"]`) as HTMLInputElement;
         const mainClassElement = form.querySelector(`input[name="mainClass"]`) as HTMLInputElement;
         const dependencyElements = form.querySelectorAll(`input[name="dependencies"]:checked`) as NodeListOf<HTMLInputElement>;
+        const loggerElement = form.querySelector(`input[name="logger"]:checked`) as HTMLInputElement;
 
         codeElement.innerText = generateCode({
             dsl: dslElement.value as "kotlin" | "groovy" | "maven",
@@ -166,7 +185,8 @@ import { optionalDependencies } from "src/generator";
             group: groupElement.value,
             version: versionElement.value,
             mainClass: mainClassElement.value,
-            dependencies: Array.from(dependencyElements).map(element => element.value)
+            dependencies: Array.from(dependencyElements).map(element => element.value),
+            logger: loggerElement.value as "none" | "tinylog" | "logback" | "simple"
         });
     }
 
