@@ -8,26 +8,26 @@ import { optionalDependencies } from "src/generator";
             <form>
                 <p>Build Script</p>
                 <div>
-                    <input type="radio" name="dsl" value="kotlin" checked>
-                    <label for="kotlin">Gradle (Kotlin)</label>
+                    <input type="radio" name="dsl" value="kotlin" id="dsl-kotlin" checked>
+                    <label for="dsl-kotlin">Gradle (Kotlin)</label>
                 </div>
                 <div>
-                    <input type="radio" name="dsl" value="groovy">
-                    <label for="groovy">Gradle (Groovy)</label>
+                    <input type="radio" name="dsl" value="groovy" id="dsl-groovy">
+                    <label for="dsl-groovy">Gradle (Groovy)</label>
                 </div>
                 <div>
-                    <input type="radio" name="dsl" value="maven">
-                    <label for="maven">Maven</label>
+                    <input type="radio" name="dsl" value="maven" id="dsl-maven">
+                    <label for="dsl-maven">Maven</label>
                 </div>
 
                 <p>Language</p>
                 <div>
-                    <input type="radio" name="language" value="java" checked>
-                    <label for="java">Java</label>
+                    <input type="radio" name="language" value="java" id="language-java" checked>
+                    <label for="language-java">Java</label>
                 </div>
                 <div>
-                    <input type="radio" name="language" value="kotlin">
-                    <label for="kotlin">Kotlin</label>
+                    <input type="radio" name="language" value="kotlin" id="language-kotlin">
+                    <label for="language-kotlin">Kotlin</label>
                 </div>
 
                 <p>Group</p>
@@ -49,20 +49,20 @@ import { optionalDependencies } from "src/generator";
 
                 <p>Logger</p>
                 <div>
-                    <input type="radio" name="logger" value="none" checked>
-                    <label for="none">None</label>
+                    <input type="radio" name="logger" value="none" id="logger-none" checked>
+                    <label for="logger-none">None</label>
                 </div>
                 <div>
-                    <input type="radio" name="logger" value="tinylog">
-                    <label for="tinylog">TinyLog</label>
+                    <input type="radio" name="logger" value="tinylog" id="logger-tinylog">
+                    <label for="logger-tinylog">TinyLog</label>
                 </div>
                 <div>
-                    <input type="radio" name="logger" value="logback">
-                    <label for="logback">Logback</label>
+                    <input type="radio" name="logger" value="logback" id="logger-logback">
+                    <label for="logger-logback">Logback</label>
                 </div>
                 <div>
-                    <input type="radio" name="logger" value="simple">
-                    <label for="simple">Simple</label>
+                    <input type="radio" name="logger" value="simple" id="logger-simple">
+                    <label for="logger-simple">Simple</label>
                 </div>
             </form>
         </div>
