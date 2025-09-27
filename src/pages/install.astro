@@ -67,7 +67,10 @@ import { optionalDependencies } from "src/generator";
             </form>
         </div>
         <div id="right">
-            <button id="copy">Copy</button>
+            <div id="button-container">
+                <button id="copy">Copy</button>
+                <button id="save">Save</button>
+            </div>
             <pre id="code"></pre>
         </div>
     </div>
@@ -85,8 +88,14 @@ import { optionalDependencies } from "src/generator";
         gap: 8px;
     }
 
-    #copy {
+    #button-container {
+        display: flex;
         width: 100%;
+        gap: 8px;
+    }
+
+    #copy, #save {
+        flex: 1;
         padding: 8px;
     }
 
@@ -191,6 +200,60 @@ import { optionalDependencies } from "src/generator";
     }
 
     document.querySelector("#copy")?.addEventListener("click", () => navigator.clipboard.writeText(codeElement.innerText));
+
+    document.querySelector("#save")?.addEventListener("click", async () => {
+        const content = codeElement.innerText;
+        const form = document.querySelector("form") as HTMLFormElement;
+        const dslElement = form.querySelector(`input[name="dsl"]:checked`) as HTMLInputElement;
+
+        let filename: string;
+        let fileTypes: any[];
+
+        if (dslElement.value === "maven") {
+            filename = "pom.xml";
+            fileTypes = [{
+                description: "Maven files",
+                accept: {"application/xml": [".xml"]},
+            }];
+        } else if (dslElement.value === "groovy") {
+            filename = "build.gradle";
+            fileTypes = [{
+                description: "Gradle files",
+                accept: {"text/plain": [".gradle"]},
+            }];
+        } else {
+            filename = "build.gradle.kts";
+            fileTypes = [{
+                description: "Gradle files",
+                accept: {"text/plain": [".gradle.kts"]},
+            }];
+        }
+
+        if ("showSaveFilePicker" in window) {
+            try {
+                const fileHandle = await window.showSaveFilePicker({
+                    suggestedName: filename,
+                    types: fileTypes,
+                });
+
+                const writable = await fileHandle.createWritable();
+                await writable.write(content);
+                await writable.close();
+            } catch (err) {
+                if (err.name !== "AbortError") {
+                    console.error("Save failed:", err);
+                }
+            }
+        } else {
+            const blob = new Blob([content], { type: "text/plain" });
+            const url = URL.createObjectURL(blob);
+            const linkElement = document.createElement("a");
+            linkElement.href = url;
+            linkElement.download = filename;
+            linkElement.click();
+            URL.revokeObjectURL(url);
+        }
+    });
     document.querySelector("form")?.addEventListener("change", updateCode);
     document.querySelector("form")?.addEventListener("input", updateCode);
     fetchVersions().then(() => updateCode());
