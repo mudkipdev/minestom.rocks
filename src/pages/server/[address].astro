@@ -39,8 +39,11 @@ const { server } = Astro.props;
         </div>
 
         <p>
-            Address: {server.ip}
-            <button id="copy">Copy</button>
+            IP Address: {server.ip}
+            <button id="copy">
+                <img id="copy-icon" src="/copy.svg" alt="Copy" />
+                <span id="copy-text" style="display: none;">Copied!</span>
+            </button>
         </p>
 
         <div id="server-data">
@@ -98,7 +101,18 @@ const { server } = Astro.props;
     }
 
     #copy {
-        margin-left: 0.5rem;
+        padding: 4px;
+        border: none;
+        background: none;
+        cursor: pointer;
+        display: inline-flex;
+        align-items: center;
+        vertical-align: middle;
+    }
+
+    #copy img {
+        width: 16px;
+        height: 16px;
     }
 </style>
 
@@ -108,11 +122,19 @@ const { server } = Astro.props;
     const iconPlaceholder = document.getElementById("icon-placeholder");
     const copyButton = document.getElementById("copy");
 
+    const copyIcon = document.getElementById("copy-icon");
+    const copyText = document.getElementById("copy-text");
+    let copyTimeout;
+
     copyButton.addEventListener("click", () => {
         navigator.clipboard.writeText(serverIp).then(() => {
-            const originalContent = copyButton.textContent;
-            copyButton.textContent = "Copied!";
-            setTimeout(() => copyButton.textContent = originalContent, 2000);
+            copyIcon.style.display = "none";
+            copyText.style.display = "inline";
+            clearTimeout(copyTimeout);
+            copyTimeout = setTimeout(() => {
+                copyIcon.style.display = "inline";
+                copyText.style.display = "none";
+            }, 500);
         });
     });
 

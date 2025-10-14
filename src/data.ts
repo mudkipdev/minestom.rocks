@@ -243,17 +243,16 @@ data.forEach((category) => {
         if (left.version && !right.version) return 1;
         if (!left.version && !right.version) return 0;
 
-        // Parse versions for proper semantic comparison
         const parseVersion = (version: string) => {
             const parts = version.split('.').map(Number);
             return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 };
         };
 
-        const leftVer = parseVersion(left.version || "");
-        const rightVer = parseVersion(right.version || "");
+        const leftVersion = parseVersion(left.version || "");
+        const rightVersion = parseVersion(right.version || "");
 
-        if (rightVer.major !== leftVer.major) return rightVer.major - leftVer.major;
-        if (rightVer.minor !== leftVer.minor) return rightVer.minor - leftVer.minor;
-        return rightVer.patch - leftVer.patch;
+        if (rightVersion.major !== leftVersion.major) return rightVersion.major - leftVersion.major;
+        if (rightVersion.minor !== leftVersion.minor) return rightVersion.minor - leftVersion.minor;
+        return rightVersion.patch - leftVersion.patch;
     });
 });
