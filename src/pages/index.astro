@@ -38,8 +38,29 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
         </section>
     ))}
 
-    <p id="footer">Made by <a href="https://mudkip.dev">mudkip</a>, star it on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub.</a></p>
+    <p id="footer">
+        Made by <a href="https://mudkip.dev">mudkip</a>, star it on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub.</a>
+        Also try our <a href="/install">build script generator!</a>
+    </p>
 </Page>
+
+<style>
+    #header {
+        margin-bottom: 16px;
+    }
+
+    #footer, #footer a {
+        margin-top: 16px;
+        margin-bottom: 32px;
+        color: #555555;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #footer, #footer a {
+            color: #888888;
+        }
+    }
+</style>
 
 <script>
     const checkbox = document.querySelector("#filter-latest") as HTMLInputElement;

@@ -17,18 +17,8 @@ a, a:visited {
     color: #0000EE;
 }
 
-#header {
-    margin-bottom: 16px;
-}
-
 input[type="checkbox"] {
     margin-right: 8px;
-}
-
-#footer, #footer a {
-    margin-top: 16px;
-    margin-bottom: 32px;
-    color: #555555;
 }
 
 ul {
