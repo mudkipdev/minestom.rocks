@@ -1,13 +1,17 @@
-interface Item {
+export interface Item {
     name: string;
     description: string;
     link: string;
     version?: `1.${number}` | `1.${number}.${number}`;
 }
 
+export interface Server extends Item {
+    ip: string;
+}
+
 interface Category {
     title: string;
-    items: Item[];
+    items: (Item | Server)[];
 }
 
 export const latestVersion = "1.21.10";
@@ -23,43 +27,50 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.10"
+                version: "1.21.10",
+                ip: "hollowcube.net"
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
-                version: "1.21.10"
+                version: "1.21.10",
+                ip: "mc.emortal.dev"
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
-                version: "1.21.8"
+                version: "1.21.8",
+                ip: "cherry.pizza"
             },
             {
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
-                version: "1.21.8"
+                version: "1.21.8",
+                ip: "play.kloon.io"
             },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com",
-                version: "1.21.8"
+                version: "1.21.8",
+                ip: "bluedragonmc.com"
             },
             {
                 name: "McWar.io",
                 description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
                 link: "https://www.youtube.com/watch?v=xfKPJ35fA4I",
-                version: "1.21.1"
+                version: "1.21.1",
+                ip: "mcwar.io"
             },
             {
                 name: "Endercube",
                 description: "A parkour server with simple code that is easy to learn from.",
                 link: "https://github.com/Ender-Cube/Endercube",
-                version: "1.21.8"
+                version: "1.21.8",
+                ip: "play.endercube.net"
             }
         ]
     },
@@ -231,6 +242,18 @@ data.forEach((category) => {
         if (!left.version && right.version) return -1;
         if (left.version && !right.version) return 1;
         if (!left.version && !right.version) return 0;
-        return (right.version || "").localeCompare(left.version || "");
+
+        // Parse versions for proper semantic comparison
+        const parseVersion = (version: string) => {
+            const parts = version.split('.').map(Number);
+            return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 };
+        };
+
+        const leftVer = parseVersion(left.version || "");
+        const rightVer = parseVersion(right.version || "");
+
+        if (rightVer.major !== leftVer.major) return rightVer.major - leftVer.major;
+        if (rightVer.minor !== leftVer.minor) return rightVer.minor - leftVer.minor;
+        return rightVer.patch - leftVer.patch;
     });
 });

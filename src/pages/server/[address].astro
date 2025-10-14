@@ -1,0 +1,140 @@
+---
+import Page from "@layouts/Page.astro";
+import { data, type Server } from "../../data";
+
+export async function getStaticPaths() {
+    const servers = data
+        .find((category) => category.title === "Servers")
+        ?.items.filter((item): item is Server => "ip" in item) || [];
+
+    return servers.map((server) => ({
+        params: { address: server.ip },
+        props: { server }
+    }));
+}
+
+const { server } = Astro.props;
+---
+
+<Page title={`Awesome Minestom - ${server.name}`}>
+    <Fragment slot="meta">
+        <meta name="theme-color" content="#FF6C32" />
+        <meta name="description" content={`${server.name} - ${server.description}`} />
+        <meta property="og:title" content={`${server.name} - minestom.rocks`} />
+        <meta property="og:description" content={server.description} />
+    </Fragment>
+
+    <div>
+        <a href="/">← Back</a>
+
+        <div class="server-header">
+            <div class="icon-container">
+                <div id="icon-placeholder" class="icon-placeholder"></div>
+                <img id="server-icon" src="" alt="Server icon">
+            </div>
+            <div class="server-info">
+                <h2>{server.name}</h2>
+                <p>{server.description}</p>
+            </div>
+        </div>
+
+        <p>
+            Address: {server.ip}
+            <button id="copy">Copy</button>
+        </p>
+
+        <div id="server-data">
+            <p>Loading server data...</p>
+        </div>
+
+        <p><a href={server.link} target="_blank" rel="noopener noreferrer">Visit Website →</a></p>
+    </div>
+</Page>
+
+<style>
+    .server-header {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin: 16px 0;
+    }
+
+    .icon-container {
+        position: relative;
+        width: 64px;
+        height: 64px;
+        flex-shrink: 0;
+    }
+
+    .icon-placeholder {
+        width: 64px;
+        height: 64px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 4px;
+    }
+
+    #server-icon {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 64px;
+        height: 64px;
+        object-fit: contain;
+        image-rendering: pixelated;
+        display: none;
+    }
+
+    .server-info {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .server-info h2 {
+        margin: 0;
+    }
+
+    .server-info p {
+        margin: 0.25rem 0 0 0;
+    }
+
+    #copy {
+        margin-left: 0.5rem;
+    }
+</style>
+
+<script define:vars={{ serverIp: server.ip }}>
+    const container = document.getElementById("server-data");
+    const iconImage = document.getElementById("server-icon");
+    const iconPlaceholder = document.getElementById("icon-placeholder");
+    const copyButton = document.getElementById("copy");
+
+    copyButton.addEventListener("click", () => {
+        navigator.clipboard.writeText(serverIp).then(() => {
+            const originalContent = copyButton.textContent;
+            copyButton.textContent = "Copied!";
+            setTimeout(() => copyButton.textContent = originalContent, 2000);
+        });
+    });
+
+    fetch(`https://api.mcsrvstat.us/3/${serverIp}`)
+        .then(response => response.json())
+        .then(data => {
+            if (!data.online) {
+                container.innerHTML = `<p>Server is offline!</p>`;
+                return;
+            }
+
+            if (data.icon) {
+                iconImage.src = data.icon;
+                iconImage.style.display = "block";
+                iconPlaceholder.style.display = "none";
+            }
+
+            if (data.players) {
+                container.innerHTML = `<p>Players: ${data.players.online} / ${data.players.max}</p>`;;
+            } else {
+                container.innerHTML = "";
+            }
+        })
+        .catch(error => container.innerHTML = `<p>Error loading server data: ${error.message}</p>`);
+</script>

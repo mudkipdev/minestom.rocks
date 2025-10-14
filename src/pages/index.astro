@@ -21,16 +21,19 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
         <section data-category-index={index}>
             <h2>{category.title}</h2>
             <ul>
-                {category.items.map((item, itemIndex) => (
-                    <li
-                        data-item-index={itemIndex}
-                        data-supports-latest={supportsLatestVersion(item)}
-                    >
-                        <a href={item.link} target="_blank" rel="noopener noreferrer">
-                            {item.name}
-                        </a> - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
-                    </li>
-                ))}
+                {category.items.map((item, itemIndex) => {
+                    const isServer = "ip" in item;
+                    return (
+                        <li
+                            data-item-index={itemIndex}
+                            data-supports-latest={supportsLatestVersion(item)}
+                        >
+                            <a href={isServer ? `/server/${item.ip}` : item.link} target={isServer ? undefined : "_blank"} rel={isServer ? undefined : "noopener noreferrer"}>
+                                {item.name}
+                            </a> - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
+                        </li>
+                    );
+                })}
             </ul>
         </section>
     ))}
