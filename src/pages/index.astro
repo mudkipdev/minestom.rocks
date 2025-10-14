@@ -93,7 +93,10 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
         }
     }
 
-    if (Math.random() < 0.01) {
+    const today = new Date();
+    const isAprilFools = today.getMonth() === 3 && today.getDate() === 1;
+
+    if (Math.random() < 0.01 || isAprilFools) {
         document.title = document.title.replace("Minestom", "Minestorm");
         document.querySelectorAll("li").forEach(replaceTextInNode);
     }
