@@ -10,7 +10,7 @@ interface Category {
     items: Item[];
 }
 
-export const latestVersion = "1.21.8";
+export const latestVersion = "1.21.10";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -23,13 +23,13 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "CounterMine",
@@ -84,7 +84,7 @@ export const data: Category[] = [
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
                 link: "https://github.com/hollow-cube/polar",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "Schem",
@@ -144,7 +144,7 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.6"
+                version: "1.21.10"
             },
             {
                 name: "NBStom",
@@ -156,7 +156,7 @@ export const data: Category[] = [
                 name: "Blocks and Stuff",
                 description: "Common block and fluid implementations for Minestom.",
                 link: "https://github.com/everbuild-org/blocks-and-stuff",
-                version: "1.21.8"
+                version: "1.21.10"
             }
         ]
     },
