@@ -226,7 +226,7 @@ export const data: Category[] = [
                 name: "BlockPhysics",
                 description: "A Minecraft physics playground powered by display entities.",
                 link: "https://github.com/emortaldev/BlockPhysics",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "minestom-version-cli",
