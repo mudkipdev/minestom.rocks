@@ -30,7 +30,7 @@ export interface Configuration {
     logger: "none" | "tinylog" | "logback" | "simple";
 }
 
-const javaVersion = "21";
+const javaVersion = "25";
 const shadowVersion = "9.2.1";
 
 export const minestom: Dependency = {
