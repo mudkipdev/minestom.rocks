@@ -126,6 +126,18 @@ import { optionalDependencies } from "src/generator";
         transform: scale(1.2);
         margin-right: 8px;
     }
+
+    @media (max-width: 768px) {
+        #container {
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        #code {
+            width: 100%;
+            font-size: 16px;
+        }
+    }
 </style>
 
 <script>
