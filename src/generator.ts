@@ -24,7 +24,6 @@ export interface Configuration {
     dsl: "kotlin" | "groovy" | "maven";
     language: "java" | "kotlin";
     group: string;
-    version: string;
     mainClass: string;
     dependencies: string[];
     logger: "none" | "tinylog" | "logback" | "simple";
@@ -84,7 +83,6 @@ export function generateKotlinCode(configuration: Configuration, resolvedVersion
     // Configuration
     code += "\n";
     if (configuration.group) code += `group = "${configuration.group}"\n`;
-    if (configuration.version) code += `version = "${configuration.version}"\n`;
     code += `application.mainClass = "${configuration.mainClass}"\n`;
 
     if (configuration.language == "java") {

@@ -33,9 +33,6 @@ import { optionalDependencies } from "src/generator";
                 <p>Group</p>
                 <input type="text" name="group" value="com.example">
 
-                <p>Version</p>
-                <input type="text" name="version" value="0.1.0">
-
                 <p>Main Class</p>
                 <input type="text" name="mainClass" value="com.example.Server">
 
@@ -194,7 +191,6 @@ import { optionalDependencies } from "src/generator";
         const dslElement = form.querySelector(`input[name="dsl"]:checked`) as HTMLInputElement;
         const languageElement = form.querySelector(`input[name="language"]:checked`) as HTMLInputElement;
         const groupElement = form.querySelector(`input[name="group"]`) as HTMLInputElement;
-        const versionElement = form.querySelector(`input[name="version"]`) as HTMLInputElement;
         const mainClassElement = form.querySelector(`input[name="mainClass"]`) as HTMLInputElement;
         const dependencyElements = form.querySelectorAll(`input[name="dependencies"]:checked`) as NodeListOf<HTMLInputElement>;
         const loggerElement = form.querySelector(`input[name="logger"]:checked`) as HTMLInputElement;
@@ -203,7 +199,6 @@ import { optionalDependencies } from "src/generator";
             dsl: dslElement.value as "kotlin" | "groovy" | "maven",
             language: languageElement.value as "java" | "kotlin",
             group: groupElement.value,
-            version: versionElement.value,
             mainClass: mainClassElement.value,
             dependencies: Array.from(dependencyElements).map(element => element.value),
             logger: loggerElement.value as "none" | "tinylog" | "logback" | "simple"
