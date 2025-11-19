@@ -10,7 +10,11 @@
         "astro": "astro"
     },
     "dependencies": {
-        "astro": "^5.13.7",
-        "typescript": "^5.9.2"
+        "@astrojs/check": "^0.9.5",
+        "astro": "^5.15.9",
+        "typescript": "^5.9.3"
+    },
+    "devDependencies": {
+        "@types/wicg-file-system-access": "^2023.10.7"
     }
 }

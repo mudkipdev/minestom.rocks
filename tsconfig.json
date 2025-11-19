@@ -2,6 +2,9 @@
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
         "baseUrl": ".",
+        "types": [
+            "@types/wicg-file-system-access"
+        ],
         "paths": {
             "@components/*": [
                 "src/components/*"

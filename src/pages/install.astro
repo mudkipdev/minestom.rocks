@@ -63,11 +63,13 @@ import { optionalDependencies } from "src/generator";
                 </div>
             </form>
         </div>
+
         <div id="right">
             <div id="button-container">
                 <button id="copy">Copy</button>
                 <button id="save">Save</button>
             </div>
+
             <pre id="code"></pre>
         </div>
     </div>
@@ -77,6 +79,10 @@ import { optionalDependencies } from "src/generator";
     #container {
         display: flex;
         justify-content: space-between;
+    }
+
+    #left {
+        user-select: none;
     }
 
     #right {
@@ -97,13 +103,21 @@ import { optionalDependencies } from "src/generator";
     }
 
     #code {
-        background: #111111;
+        background: #EEEEEE;
+        color: #000000;
         font-size: 14px;
         border-radius: 4px;
         padding: 16px;
         width: 600px;
         white-space: pre;
         overflow-x: auto;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #code {
+            background: #2C2B32;
+            color: #FFFFFF;
+        }
     }
 
     input[type="text"] {
@@ -213,7 +227,7 @@ import { optionalDependencies } from "src/generator";
         const dslElement = form.querySelector(`input[name="dsl"]:checked`) as HTMLInputElement;
 
         let filename: string;
-        let fileTypes: any[];
+        let fileTypes: FilePickerAcceptType[];
 
         if (dslElement.value === "maven") {
             filename = "pom.xml";
@@ -246,7 +260,7 @@ import { optionalDependencies } from "src/generator";
                 await writable.write(content);
                 await writable.close();
             } catch (err) {
-                if (err.name !== "AbortError") {
+                if (err instanceof DOMException && err.name !== "AbortError") {
                     console.error("Save failed:", err);
                 }
             }
@@ -260,6 +274,7 @@ import { optionalDependencies } from "src/generator";
             URL.revokeObjectURL(url);
         }
     });
+
     document.querySelector("form")?.addEventListener("change", updateCode);
     document.querySelector("form")?.addEventListener("input", updateCode);
     fetchVersions().then(() => updateCode());
