@@ -235,11 +235,6 @@ export const data: Category[] = [
                 version: "1.21.10"
             },
             {
-                name: "minestom-bench",
-                description: "Benchmarking large language models on Minestom knowledge.",
-                link: "https://github.com/mudkipdev/minestom-bench"
-            },
-            {
                 name: "minestom-version-cli",
                 description: "Check the latest Minestom commit from your terminal.",
                 link: "https://github.com/cosrnic/minestom-version-cli"
