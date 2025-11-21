@@ -168,6 +168,12 @@ export const data: Category[] = [
                 description: "Common block and fluid implementations for Minestom.",
                 link: "https://github.com/everbuild-org/blocks-and-stuff",
                 version: "1.21.10"
+            },
+            {
+                name: "Minecraft Heads Minestom",
+                description: "Minecraft-Heads.com Integration for Minestom",
+                link: "https://github.com/everbuild-org/minecraft-heads-minestom",
+                version: "1.21.10"
             }
         ]
     },
