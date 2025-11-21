@@ -59,13 +59,6 @@ export const data: Category[] = [
                 ip: "bluedragonmc.com"
             },
             {
-                name: "McWar.io",
-                description: "A first-person shooter with realistic weapons and a unique desktop GUI.",
-                link: "https://www.youtube.com/watch?v=xfKPJ35fA4I",
-                version: "1.21.1",
-                ip: "mcwar.io"
-            },
-            {
                 name: "Endercube",
                 description: "A parkour server with simple code that is easy to learn from.",
                 link: "https://github.com/Ender-Cube/Endercube",
@@ -101,13 +94,13 @@ export const data: Category[] = [
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
                 link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
-                version: "1.21.8"
+                version: "1.21.10"
             },
             {
                 name: "AtlasProjectiles",
@@ -170,8 +163,8 @@ export const data: Category[] = [
                 version: "1.21.10"
             },
             {
-                name: "Minecraft Heads Minestom",
-                description: "Minecraft-Heads.com Integration for Minestom",
+                name: "minecraft-heads-minestom",
+                description: "Minecraft-Heads.com integration for Minestom",
                 link: "https://github.com/everbuild-org/minecraft-heads-minestom",
                 version: "1.21.10"
             }
