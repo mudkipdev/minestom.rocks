@@ -64,6 +64,13 @@ export const data: Category[] = [
                 link: "https://github.com/Ender-Cube/Endercube",
                 version: "1.21.8",
                 ip: "play.endercube.net"
+            },
+            {
+                name: "sb.tems.pl",
+                description: "A speed builders server featuring practice and competitive game modes.",
+                link: "https://sb.tems.pl",
+                version: "1.21.3",
+                ip: "sb.tems.pl"
             }
         ]
     },
