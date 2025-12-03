@@ -67,7 +67,7 @@ export const data: Category[] = [
             },
             {
                 name: "sb.tems.pl",
-                description: "A speed builders server featuring practice and competitive game modes.",
+                description: "A Speed Builders server featuring practice and competitive game modes.",
                 link: "https://sb.tems.pl",
                 version: "1.21.3",
                 ip: "sb.tems.pl"
