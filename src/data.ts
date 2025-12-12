@@ -14,7 +14,7 @@ interface Category {
     items: (Item | Server)[];
 }
 
-export const latestVersion = "1.21.10";
+export const latestVersion = "1.21.11";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -34,7 +34,7 @@ export const data: Category[] = [
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
-                version: "1.21.10",
+                version: "1.21.11",
                 ip: "mc.emortal.dev"
             },
             {
@@ -205,6 +205,19 @@ export const data: Category[] = [
             }
         ]
     },
+
+/*
+    {
+        title: "Snippets",
+        items: [
+            {
+                name: "PlaybackPlayer.java",
+                description: "A widely shared gist used to implement fake player NPCs.",
+                link: "https://gist.github.com/mworzala/2c5da51204c45c70db771d0ce7fe9412"
+            }
+        ]
+    },
+*/
 
     // Things that don't belong into any of the other categories, such as servers which are not hosted publicly
     {
