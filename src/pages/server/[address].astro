@@ -113,6 +113,13 @@ const { server } = Astro.props;
     #copy img {
         width: 16px;
         height: 16px;
+        filter: invert(0.5);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #copy img {
+            filter: invert(1);
+        }
     }
 </style>
 
