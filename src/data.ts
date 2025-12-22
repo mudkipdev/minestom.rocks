@@ -198,11 +198,14 @@ export const data: Category[] = [
                 link: "https://www.youtube.com/watch?v=QcEQcFhYLoY&list=PLfu_Bpi_zcDP3lfhG_5VQ7G0kD4a8GwDf",
                 version: "1.21.1"
             },
+            // metadata index 17 is outdated in 1.21.11
+            /*
             {
                 name: "PlaybackPlayer.java",
                 description: "A widely shared gist used to implement fake player NPCs.",
                 link: "https://gist.github.com/mworzala/2c5da51204c45c70db771d0ce7fe9412"
             }
+            */
         ]
     },
 
