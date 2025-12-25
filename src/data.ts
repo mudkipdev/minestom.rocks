@@ -234,9 +234,9 @@ export const data: Category[] = [
             },
             {
                 name: "Swofty's Skyblock",
-                description: "A recreation of Hypixel's Skyblock game mode in Minestom.",
+                description: "A recreation of Hypixel's Skyblock and Bed Wars game modes in Minestom.",
                 link: "https://github.com/Swofty-Developments/HypixelSkyBlock",
-                version: "1.21.8"
+                version: "1.21.11"
             },
             {
                 name: "CRAFT-8",
