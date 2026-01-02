@@ -27,7 +27,7 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.10",
+                version: "1.21.11",
                 ip: "hollowcube.net"
             },
             {
