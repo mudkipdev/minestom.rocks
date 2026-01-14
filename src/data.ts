@@ -41,7 +41,7 @@ export const data: Category[] = [
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
-                version: "1.21.8",
+                version: "1.21.11",
                 ip: "cherry.pizza"
             },
             {
@@ -83,7 +83,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.10"
+                version: "1.21.11"
             },
             {
                 name: "MinestomFluids",
@@ -95,13 +95,13 @@ export const data: Category[] = [
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
                 link: "https://github.com/hollow-cube/polar",
-                version: "1.21.10"
+                version: "1.21.11"
             },
             {
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.10"
+                version: "1.21.11"
             },
             {
                 name: "WorldSeedEntityEngine",
@@ -113,7 +113,7 @@ export const data: Category[] = [
                 name: "AtlasProjectiles",
                 description: "Implementations for arrows, fireballs, snowballs, and more.",
                 link: "https://github.com/AtlasEngineCa/AtlasProjectiles",
-                version: "1.21.5"
+                version: "1.21.11"
             },
             {
                 name: "Trove",

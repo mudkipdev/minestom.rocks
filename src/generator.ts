@@ -30,7 +30,11 @@ export interface Configuration {
 }
 
 const javaVersion = "25";
-const shadowVersion = "9.2.1";
+const shadowVersion = "9.3.1";
+const kotlinVersion = "2.3.0";
+const tinylogVersion = "2.8.0-M1";
+const logbackVersion = "1.5.24";
+const slf4jSimpleVersion = "2.0.17";
 
 export const minestom: Dependency = {
     name: "Minestom",
@@ -72,7 +76,7 @@ export function generateKotlinCode(configuration: Configuration, resolvedVersion
     if (configuration.language == "java") {
         code += " ".repeat(4) + "java\n";
     } else if (configuration.language == "kotlin") {
-        const resolvedKotlinVersion = resolvedVersions["kotlin"] || "2.2.20";
+        const resolvedKotlinVersion = resolvedVersions["kotlin"] || kotlinVersion;
         code += " ".repeat(4) + `kotlin("jvm") version "${resolvedKotlinVersion}"\n`;
     }
 
@@ -124,13 +128,13 @@ export function generateKotlinCode(configuration: Configuration, resolvedVersion
 
     // Logging
     if (configuration.logger === "tinylog") {
-        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-api` + (configuration.language === "kotlin" ? "-kotlin" : "") + `:2.8.0-M1")\n`;
-        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-impl:2.8.0-M1")\n`;
-        code += " ".repeat(4) + `implementation("org.tinylog:slf4j-tinylog:2.8.0-M1")\n`;
+        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-api` + (configuration.language === "kotlin" ? "-kotlin" : "") + `:${tinylogVersion}")\n`;
+        code += " ".repeat(4) + `implementation("org.tinylog:tinylog-impl:${tinylogVersion}")\n`;
+        code += " ".repeat(4) + `implementation("org.tinylog:slf4j-tinylog:${tinylogVersion}")\n`;
     } else if (configuration.logger === "logback") {
-        code += " ".repeat(4) + `implementation("ch.qos.logback:logback-classic:1.5.18")\n`;
+        code += " ".repeat(4) + `implementation("ch.qos.logback:logback-classic:${logbackVersion}")\n`;
     } else if (configuration.logger === "simple") {
-        code += " ".repeat(4) + `implementation("org.slf4j:slf4j-simple:2.0.17")\n`;
+        code += " ".repeat(4) + `implementation("org.slf4j:slf4j-simple:${slf4jSimpleVersion}")\n`;
     }
 
     code += "}\n";
@@ -149,7 +153,7 @@ export function generateGroovyCode(configuration: Configuration, resolvedVersion
     if (configuration.language == "java") {
         code += " ".repeat(4) + "id 'java'\n";
     } else if (configuration.language == "kotlin") {
-        const resolvedKotlinVersion = resolvedVersions["kotlin"] || "2.2.20";
+        const resolvedKotlinVersion = resolvedVersions["kotlin"] || kotlinVersion;
         code += " ".repeat(4) + `id 'org.jetbrains.kotlin.jvm' version '${resolvedKotlinVersion}'\n`;
     }
 
@@ -201,13 +205,13 @@ export function generateGroovyCode(configuration: Configuration, resolvedVersion
     }
 
     if (configuration.logger === "tinylog") {
-        code += " ".repeat(4) + `implementation 'org.tinylog:tinylog-api` + (configuration.language === "kotlin" ? "-kotlin" : "") + `:2.8.0-M1'\n`;
-        code += " ".repeat(4) + `implementation 'org.tinylog:tinylog-impl:2.8.0-M1'\n`;
-        code += " ".repeat(4) + `implementation 'org.tinylog:slf4j-tinylog:2.8.0-M1'\n`;
+        code += " ".repeat(4) + `implementation 'org.tinylog:tinylog-api` + (configuration.language === "kotlin" ? "-kotlin" : "") + `:${tinylogVersion}'\n`;
+        code += " ".repeat(4) + `implementation 'org.tinylog:tinylog-impl:${tinylogVersion}'\n`;
+        code += " ".repeat(4) + `implementation 'org.tinylog:slf4j-tinylog:${tinylogVersion}'\n`;
     } else if (configuration.logger === "logback") {
-        code += " ".repeat(4) + `implementation 'ch.qos.logback:logback-classic:1.5.18'\n`;
+        code += " ".repeat(4) + `implementation 'ch.qos.logback:logback-classic:${logbackVersion}'\n`;
     } else if (configuration.logger === "simple") {
-        code += " ".repeat(4) + `implementation 'org.slf4j:slf4j-simple:2.0.17'\n`;
+        code += " ".repeat(4) + `implementation 'org.slf4j:slf4j-simple:${slf4jSimpleVersion}'\n`;
     }
 
     code += "}\n";
@@ -237,7 +241,7 @@ export function generateMavenCode(configuration: Configuration, resolvedVersions
     code += `        <maven.compiler.target>${javaVersion}</maven.compiler.target>\n`;
     code += `        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>\n`;
     if (configuration.language === "kotlin") {
-        const resolvedKotlinVersion = resolvedVersions["kotlin"] || "2.2.20";
+        const resolvedKotlinVersion = resolvedVersions["kotlin"] || "2.3.0";
         code += `        <kotlin.version>${resolvedKotlinVersion}</kotlin.version>\n`;
     }
     code += `    </properties>\n`;
@@ -306,7 +310,7 @@ export function generateMavenCode(configuration: Configuration, resolvedVersions
         code += `        <dependency>\n`;
         code += `            <groupId>ch.qos.logback</groupId>\n`;
         code += `            <artifactId>logback-classic</artifactId>\n`;
-        code += `            <version>1.5.18</version>\n`;
+        code += `            <version>1.5.24</version>\n`;
         code += `        </dependency>\n`;
     } else if (configuration.logger === "simple") {
         code += `        <dependency>\n`;
