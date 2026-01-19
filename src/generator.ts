@@ -46,12 +46,9 @@ export const minestom: Dependency = {
 export const optionalDependencies: Record<string, Dependency> = {
     pvp: {
         name: "MinestomPvP",
-        repository: {
-            url: "https://jitpack.io"
-        },
-        group: "com.github.ToGar2",
+        group: "io.github.togar2",
         artifact: "MinestomPvP",
-        version: async () => (await fetchLatestCommit("ToGar2", "MinestomPvP", "master")).substring(0, 10),
+        version: "2025.12.29-1.21.11",
     },
     polar: {
         name: "Polar",
