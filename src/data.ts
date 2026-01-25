@@ -255,6 +255,11 @@ export const data: Category[] = [
                 name: "minestom-version-cli",
                 description: "Check the latest Minestom commit from your terminal.",
                 link: "https://github.com/cosrnic/minestom-version-cli"
+            },
+            {
+                name: "Minestom Template",
+                description: "An unofficial project template including Spark, LuckPerms, and other basics for faster setup.",
+                link: "https://github.com/tropicalshadow/minestom-template"
             }
         ]
     }
