@@ -252,7 +252,7 @@ export const data: Category[] = [
             },
             {
                 name: "Minestom Template",
-                description: "A project template full with Spark, LuckPerms & basics for quicker setup.",
+                description: "An unofficial project template including Spark, LuckPerms, and other basics for faster setup.",
                 link: "https://github.com/tropicalshadow/minestom-template"
             }
         ]
