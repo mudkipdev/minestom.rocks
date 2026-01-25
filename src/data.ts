@@ -174,6 +174,12 @@ export const data: Category[] = [
                 description: "Minecraft-Heads.com integration for Minestom.",
                 link: "https://github.com/everbuild-org/minecraft-heads-minestom",
                 version: "1.21.10"
+            },
+            {
+                name: "minecraft-utils",
+                description: "A feature-rich Minestom library containing many examples.",
+                link: "https://github.com/tropicalshadow/minestom-utils",
+                version: "1.21.11"
             }
         ]
     },
