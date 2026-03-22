@@ -8,6 +8,11 @@ export async function fetchLatestRelease(owner: string, repository: string): Pro
     return (await response.json()).tag_name;
 }
 
+export async function fetchLatestMavenVersion(groupId: string, artifactId: string): Promise<string> {
+    const response = await fetch(`/api/maven-version?group=${groupId}&artifact=${artifactId}`);
+    return (await response.json()).version;
+}
+
 export interface Repository {
     url: string;
 }
@@ -48,7 +53,7 @@ export const optionalDependencies: Record<string, Dependency> = {
         name: "MinestomPvP",
         group: "io.github.togar2",
         artifact: "MinestomPvP",
-        version: "2025.12.29-1.21.11",
+        version: () => fetchLatestMavenVersion("io.github.togar2", "MinestomPvP"),
     },
     polar: {
         name: "Polar",

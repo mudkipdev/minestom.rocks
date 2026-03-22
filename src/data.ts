@@ -42,7 +42,7 @@ export const data: Category[] = [
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
                 version: "1.21.11",
-                ip: "cherry.pizza"
+                ip: "play.cherry.pizza"
             },
             {
                 name: "kloon.io",
