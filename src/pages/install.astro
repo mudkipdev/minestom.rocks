@@ -5,6 +5,7 @@ import { optionalDependencies } from "src/generator";
 <Page title="Installation">
     <div id="container">
         <div id="left">
+            <a href="/" id="back">← Back</a>
             <form>
                 <p>Build Script</p>
                 <div>
@@ -111,14 +112,14 @@ import { optionalDependencies } from "src/generator";
     }
 
     #left {
-        flex: 1;
+        flex: 0 0 fit-content;
         padding: 32px 48px;
         overflow-y: auto;
         user-select: none;
     }
 
     #right {
-        flex: 4;
+        flex: 1;
         display: flex;
         flex-direction: column;
         border-left: 1px solid #D0D7DE;
@@ -148,6 +149,11 @@ import { optionalDependencies } from "src/generator";
         font-size: 14px;
         white-space: pre;
         min-height: 100%;
+    }
+
+    #back {
+        display: block;
+        margin-bottom: 16px;
     }
 
     input[type="text"] {
