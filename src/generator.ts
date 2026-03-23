@@ -9,8 +9,12 @@ export async function fetchLatestRelease(owner: string, repository: string): Pro
 }
 
 export async function fetchLatestMavenVersion(groupId: string, artifactId: string): Promise<string> {
-    const response = await fetch(`/api/maven-version?group=${groupId}&artifact=${artifactId}`);
-    return (await response.json()).version;
+    const path = `${groupId.replace(/\./g, "/")}/${artifactId}/maven-metadata.xml`;
+    const response = await fetch(`https://repo1.maven.org/maven2/${path}`);
+    const text = await response.text();
+    const version = (text.match(/<latest>(.*?)<\/latest>/) ?? text.match(/<release>(.*?)<\/release>/))?.[1];
+    if (!version) throw new Error(`Version not found for ${groupId}:${artifactId}`);
+    return version;
 }
 
 export interface Repository {

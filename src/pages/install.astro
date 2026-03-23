@@ -70,54 +70,84 @@ import { optionalDependencies } from "src/generator";
                 <button id="save">Save</button>
             </div>
 
-            <pre id="code"></pre>
+            <div id="code"></div>
         </div>
     </div>
 </Page>
 
+<style is:global>
+    body:has(#container) {
+        max-width: none !important;
+        padding: 0 !important;
+        margin: 0 !important;
+    }
+
+    #code .shiki, #code .shiki span {
+        color: var(--shiki-light);
+        background-color: var(--shiki-light-bg);
+    }
+
+    @media (prefers-color-scheme: dark) {
+        #code .shiki, #code .shiki span {
+            color: var(--shiki-dark) !important;
+            background-color: var(--shiki-dark-bg) !important;
+        }
+
+        #right {
+            border-left-color: #30363D !important;
+        }
+
+        #button-container {
+            border-bottom-color: #30363D !important;
+        }
+    }
+</style>
+
 <style>
     #container {
         display: flex;
-        justify-content: space-between;
+        height: 100vh;
+        overflow: hidden;
     }
 
     #left {
+        flex: 1;
+        padding: 32px 48px;
+        overflow-y: auto;
         user-select: none;
     }
 
     #right {
+        flex: 4;
         display: flex;
         flex-direction: column;
-        gap: 8px;
+        border-left: 1px solid #D0D7DE;
+        overflow: hidden;
     }
 
     #button-container {
         display: flex;
-        width: 100%;
         gap: 8px;
+        padding: 8px;
+        border-bottom: 1px solid #D0D7DE;
     }
 
     #copy, #save {
-        flex: 1;
+        width: 300px;
         padding: 8px;
     }
 
     #code {
-        background: #EEEEEE;
-        color: #000000;
-        font-size: 14px;
-        border-radius: 4px;
-        padding: 16px;
-        width: 600px;
-        white-space: pre;
-        overflow-x: auto;
+        flex: 1;
+        overflow: auto;
     }
 
-    @media (prefers-color-scheme: dark) {
-        #code {
-            background: #2C2B32;
-            color: #FFFFFF;
-        }
+    #code :global(pre) {
+        margin: 0;
+        padding: 16px;
+        font-size: 14px;
+        white-space: pre;
+        min-height: 100%;
     }
 
     input[type="text"] {
@@ -137,18 +167,6 @@ import { optionalDependencies } from "src/generator";
         transform: scale(1.2);
         margin-right: 8px;
     }
-
-    @media (max-width: 768px) {
-        #container {
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        #code {
-            width: 100%;
-            font-size: 16px;
-        }
-    }
 </style>
 
 <script>
@@ -161,6 +179,13 @@ import { optionalDependencies } from "src/generator";
         minestom,
         fetchLatestRelease
     } from "../generator";
+    import { createHighlighter } from "shiki";
+
+    function dslToLanguage(dsl: string): string {
+        if (dsl === "maven") return "xml";
+        if (dsl === "groovy") return "groovy";
+        return "kotlin";
+    }
 
     function generateCode(configuration: Configuration): string {
         if (configuration.dsl == "groovy") return generateGroovyCode(configuration, resolvedVersions);
@@ -168,8 +193,14 @@ import { optionalDependencies } from "src/generator";
         return generateKotlinCode(configuration, resolvedVersions);
     }
 
-    const codeElement = document.querySelector("#code") as HTMLPreElement;
+    const codeElement = document.querySelector("#code") as HTMLDivElement;
+    let currentCode = "";
     let resolvedVersions: Record<string, string> = {};
+
+    const highlighter = await createHighlighter({
+        themes: ["github-light", "github-dark-high-contrast"],
+        langs: ["kotlin", "groovy", "xml"],
+    });
 
     async function fetchVersions() {
         try {
@@ -209,20 +240,28 @@ import { optionalDependencies } from "src/generator";
         const dependencyElements = form.querySelectorAll(`input[name="dependencies"]:checked`) as NodeListOf<HTMLInputElement>;
         const loggerElement = form.querySelector(`input[name="logger"]:checked`) as HTMLInputElement;
 
-        codeElement.innerText = generateCode({
-            dsl: dslElement.value as "kotlin" | "groovy" | "maven",
+        const dsl = dslElement.value as "kotlin" | "groovy" | "maven";
+        const code = generateCode({
+            dsl,
             language: languageElement.value as "java" | "kotlin",
             group: groupElement.value,
             mainClass: mainClassElement.value,
             dependencies: Array.from(dependencyElements).map(element => element.value),
             logger: loggerElement.value as "none" | "tinylog" | "logback" | "simple"
         });
+
+        currentCode = code;
+        codeElement.innerHTML = highlighter.codeToHtml(code, {
+            lang: dslToLanguage(dsl),
+            themes: { light: "github-light", dark: "github-dark-high-contrast" },
+            defaultColor: false,
+        });
     }
 
-    document.querySelector("#copy")?.addEventListener("click", () => navigator.clipboard.writeText(codeElement.innerText));
+    document.querySelector("#copy")?.addEventListener("click", () => navigator.clipboard.writeText(currentCode));
 
     document.querySelector("#save")?.addEventListener("click", async () => {
-        const content = codeElement.innerText;
+        const content = currentCode;
         const form = document.querySelector("form") as HTMLFormElement;
         const dslElement = form.querySelector(`input[name="dsl"]:checked`) as HTMLInputElement;
 
