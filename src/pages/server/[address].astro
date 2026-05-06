@@ -50,7 +50,9 @@ const { server } = Astro.props;
             <p>Loading server data...</p>
         </div>
 
-        <p><a href={server.link} target="_blank" rel="noopener noreferrer">Visit Website →</a></p>
+        {(server.website ?? server.link) && (
+            <p><a href={server.website ?? server.link} target="_blank" rel="noopener noreferrer">Visit Website →</a></p>
+        )}
     </div>
 </Page>
 
@@ -118,7 +120,7 @@ const { server } = Astro.props;
 
     @media (prefers-color-scheme: dark) {
         #copy img {
-            filter: invert(1);
+            filter: none;
         }
     }
 </style>

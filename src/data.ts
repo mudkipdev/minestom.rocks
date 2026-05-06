@@ -1,7 +1,7 @@
 export interface Item {
     name: string;
     description: string;
-    link: string;
+    link?: string;
     version?: `${number}.${number}` | `${number}.${number}.${number}`;
 }
 
@@ -20,6 +20,13 @@ export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
 export const data: Category[] = [
+    /*
+        A list of unreleased Minestom servers:
+        - BridgeSplash (owned by TropicalShadow)
+        - Asorda (owned by Bloeckchengrafik, AEinNico, and CreepyX)
+        - Cytosis (owned by Webhead1104)
+    */
+
     // Publicly hosted servers which primarily use Minestom
     {
         title: "Servers",
@@ -78,6 +85,12 @@ export const data: Category[] = [
                 website: "https://sb.tems.pl",
                 version: "1.21.11",
                 ip: "sb.tems.pl"
+            },
+            {
+                name: "Minecrement",
+                description: "A free-to-play idle gens server with automine, farming, and RPG elements.",
+                version: "26.1.1",
+                ip: "minecrement.minehut.gg"
             }
         ]
     },

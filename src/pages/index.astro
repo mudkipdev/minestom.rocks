@@ -28,9 +28,13 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
                             data-item-index={itemIndex}
                             data-supports-latest={supportsLatestVersion(item)}
                         >
-                            <a href={isServer ? `/server/${item.ip}` : item.link} target={isServer ? undefined : "_blank"} rel={isServer ? undefined : "noopener noreferrer"}>
-                                {item.name}
-                            </a> - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
+                            {isServer ? (
+                                <a href={`/server/${item.ip}`}>{item.name}</a>
+                            ) : item.link ? (
+                                <a href={item.link} target="_blank" rel="noopener noreferrer">{item.name}</a>
+                            ) : (
+                                <span>{item.name}</span>
+                            )} - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
                         </li>
                     );
                 })}
