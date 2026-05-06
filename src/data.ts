@@ -7,7 +7,6 @@ export interface Item {
 
 export interface Server extends Item {
     ip: string;
-    website?: string;
 }
 
 interface Category {
@@ -24,7 +23,7 @@ export const data: Category[] = [
         A list of unreleased Minestom servers:
         - BridgeSplash (owned by TropicalShadow)
         - Asorda (owned by Bloeckchengrafik, AEinNico, and CreepyX)
-        - Cytosis (owned by Webhead1104)
+        - Cytosis (owned by Webhead1104 and Foxikle)
     */
 
     // Publicly hosted servers which primarily use Minestom
@@ -35,7 +34,6 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                website: "https://hollowcube.net",
                 version: "26.1.2",
                 ip: "hollowcube.net"
             },
@@ -50,7 +48,6 @@ export const data: Category[] = [
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
-                website: "https://cherry.pizza",
                 version: "1.21.11",
                 ip: "direct.cherry.pizza"
             },
@@ -58,7 +55,6 @@ export const data: Category[] = [
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
-                website: "https://kloon.io",
                 version: "1.21.8",
                 ip: "play.kloon.io"
             },
@@ -66,23 +62,20 @@ export const data: Category[] = [
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com",
-                website: "https://bluedragonmc.com",
                 version: "1.21.11",
                 ip: "bluedragonmc.com"
             },
             // {
             //     name: "Endercube",
             //     description: "A parkour server with simple code that is easy to learn from.",
-            //     link: "https://github.com/Ender-Cube/Endercube",
-            //     website: "https://endercube.net",
+            //     link: "https://endercube.net",
             //     version: "1.21.8",
             //     ip: "play.endercube.net"
             // },
             {
                 name: "sb.tems.pl",
                 description: "A Speed Builders server featuring practice and competitive game modes.",
-                link: "https://sb.tems.pl",
-                website: "https://sb.tems.pl",
+                link: "https://www.tems.pl",
                 version: "1.21.11",
                 ip: "sb.tems.pl"
             },
