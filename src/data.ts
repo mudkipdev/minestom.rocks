@@ -34,6 +34,8 @@ export const data: Category[] = [
         - Asorda (owned by Bloeckchengrafik, AEinNico, and CreepyX)
         - Cytosis (owned by Webhead1104 and Foxikle)
         - TrainCraft (owned by IEatSystemFiles)
+        - OledMC (owned by hapily, IP: oledmc.minehut.gg?)
+        - WidowMC (owned by Pxblosky)
     */
 
     // Publicly hosted servers which primarily use Minestom
@@ -101,6 +103,14 @@ export const data: Category[] = [
                 version: "26.1.1",
                 ip: "minecrement.minehut.gg",
                 discord: discord("5Cx9njv7D6")
+            },
+            {
+                name: "Fracture",
+                description: "A competitive minigames arena with leaderboards and high-stakes matches.",
+                link: "https://playfracture.com",
+                version: "1.21.11",
+                ip: "playfracture.com",
+                discord: discord("apcJbvmdNV")
             }
         ]
     },
