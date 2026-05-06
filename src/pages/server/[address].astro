@@ -50,8 +50,11 @@ const { server } = Astro.props;
             <p>Loading server data...</p>
         </div>
 
-        {server.link && (
-            <p><a href={server.link} target="_blank" rel="noopener noreferrer">Visit Website →</a></p>
+        {server.website && (
+            <p><a href={server.website} target="_blank" rel="noopener noreferrer">Visit Website →</a></p>
+        )}
+        {server.github && (
+            <p><a href={server.github} target="_blank" rel="noopener noreferrer">View on GitHub →</a></p>
         )}
         {server.discord && (
             <p><a href={`https://discord.com/invite/${server.discord}`} target="_blank" rel="noopener noreferrer">Join Discord Server →</a></p>

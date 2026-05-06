@@ -6,15 +6,20 @@ export const discord = <T extends string>(
         : T
 ): DiscordInvite => code as unknown as DiscordInvite;
 
-export interface Item {
+interface BaseEntry {
     name: string;
     description: string;
-    link?: string;
     version?: `${number}.${number}` | `${number}.${number}.${number}`;
 }
 
-export interface Server extends Item {
+export interface Item extends BaseEntry {
+    link?: string;
+}
+
+export interface Server extends BaseEntry {
     ip: string;
+    website?: string;
+    github?: string;
     discord?: DiscordInvite;
 }
 
@@ -24,7 +29,7 @@ interface Category {
 }
 
 export const latestVersion = "26.1.2";
-export const supportsLatestVersion = (item: Item): boolean =>
+export const supportsLatestVersion = (item: Item | Server): boolean =>
     item.version === latestVersion || !item.version;
 
 export const data: Category[] = [
@@ -46,56 +51,60 @@ export const data: Category[] = [
             {
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
-                link: "https://hollowcube.net",
                 version: "26.1.2",
                 ip: "hollowcube.net",
+                website: "https://hollowcube.net",
+                github: "https://github.com/hollow-cube",
                 discord: discord("h9Z9DGGJjJ")
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
-                link: "https://github.com/emortalmc",
                 version: "26.1.2",
                 ip: "mc.emortal.dev",
+                github: "https://github.com/emortalmc",
                 discord: discord("qrgqe8hDmx")
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
-                link: "https://cherry.pizza",
                 version: "1.21.11",
                 ip: "direct.cherry.pizza",
+                website: "https://cherry.pizza",
                 discord: discord("TNbyVSuaQh")
             },
             {
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
-                link: "https://kloon.io",
                 version: "1.21.8",
                 ip: "play.kloon.io",
+                website: "https://kloon.io",
+                github: "https://github.com/KloonInnovations/GameServer-Public",
                 discord: discord("peC3UVmZc6")
             },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
-                link: "https://bluedragonmc.com",
                 version: "1.21.11",
                 ip: "bluedragonmc.com",
+                website: "https://bluedragonmc.com",
+                github: "https://github.com/BlueDragonMC",
                 discord: discord("pYA7xxytYJ")
             },
             // {
             //     name: "Endercube",
             //     description: "A parkour server with simple code that is easy to learn from.",
-            //     link: "https://endercube.net",
             //     version: "1.21.8",
-            //     ip: "play.endercube.net"
+            //     ip: "play.endercube.net",
+            //     website: "https://endercube.net",
+            //     github: "https://github.com/Ender-Cube/Endercube"
             // },
             {
                 name: "sb.tems.pl",
                 description: "A Speed Builders server featuring practice and competitive game modes.",
-                link: "https://www.tems.pl",
                 version: "1.21.11",
                 ip: "sb.tems.pl",
+                website: "https://www.tems.pl",
                 discord: discord("dkb2hCHV6A")
             },
             {
@@ -108,9 +117,9 @@ export const data: Category[] = [
             {
                 name: "Fracture",
                 description: "A competitive minigames arena with leaderboards and high-stakes matches.",
-                link: "https://playfracture.com",
                 version: "1.21.11",
                 ip: "playfracture.com",
+                website: "https://playfracture.com",
                 discord: discord("apcJbvmdNV")
             }
         ]
