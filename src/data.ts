@@ -36,6 +36,7 @@ export const data: Category[] = [
         - TrainCraft (owned by IEatSystemFiles)
         - OledMC (owned by hapily, IP: oledmc.minehut.gg?)
         - WidowMC (owned by Pxblosky)
+        - w77 (owned by Cody, IP: w77.gg)
     */
 
     // Publicly hosted servers which primarily use Minestom
