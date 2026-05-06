@@ -2,11 +2,12 @@ export interface Item {
     name: string;
     description: string;
     link: string;
-    version?: `1.${number}` | `1.${number}.${number}`;
+    version?: `${number}.${number}` | `${number}.${number}.${number}`;
 }
 
 export interface Server extends Item {
     ip: string;
+    website?: string;
 }
 
 interface Category {
@@ -14,7 +15,7 @@ interface Category {
     items: (Item | Server)[];
 }
 
-export const latestVersion = "1.21.11";
+export const latestVersion = "26.1.2";
 export const supportsLatestVersion = (item: Item): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -27,27 +28,30 @@ export const data: Category[] = [
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
-                version: "1.21.11",
+                website: "https://hollowcube.net",
+                version: "26.1.2",
                 ip: "hollowcube.net"
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
-                version: "1.21.11",
+                version: "26.1.2",
                 ip: "mc.emortal.dev"
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
+                website: "https://cherry.pizza",
                 version: "1.21.11",
-                ip: "play.cherry.pizza"
+                ip: "direct.cherry.pizza"
             },
             {
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
+                website: "https://kloon.io",
                 version: "1.21.8",
                 ip: "play.kloon.io"
             },
@@ -55,21 +59,24 @@ export const data: Category[] = [
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com",
-                version: "1.21.8",
+                website: "https://bluedragonmc.com",
+                version: "1.21.11",
                 ip: "bluedragonmc.com"
             },
-            {
-                name: "Endercube",
-                description: "A parkour server with simple code that is easy to learn from.",
-                link: "https://github.com/Ender-Cube/Endercube",
-                version: "1.21.8",
-                ip: "play.endercube.net"
-            },
+            // {
+            //     name: "Endercube",
+            //     description: "A parkour server with simple code that is easy to learn from.",
+            //     link: "https://github.com/Ender-Cube/Endercube",
+            //     website: "https://endercube.net",
+            //     version: "1.21.8",
+            //     ip: "play.endercube.net"
+            // },
             {
                 name: "sb.tems.pl",
                 description: "A Speed Builders server featuring practice and competitive game modes.",
                 link: "https://sb.tems.pl",
-                version: "1.21.3",
+                website: "https://sb.tems.pl",
+                version: "1.21.11",
                 ip: "sb.tems.pl"
             }
         ]
