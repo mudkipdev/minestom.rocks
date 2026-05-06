@@ -1,3 +1,11 @@
+export type DiscordInvite = string & { readonly __discord: unique symbol };
+
+export const discord = <T extends string>(
+    code: T extends `http${string}` ? never
+        : T extends `${string}/${string}` ? never
+        : T
+): DiscordInvite => code as unknown as DiscordInvite;
+
 export interface Item {
     name: string;
     description: string;
@@ -7,6 +15,7 @@ export interface Item {
 
 export interface Server extends Item {
     ip: string;
+    discord?: DiscordInvite;
 }
 
 interface Category {
@@ -24,6 +33,7 @@ export const data: Category[] = [
         - BridgeSplash (owned by TropicalShadow)
         - Asorda (owned by Bloeckchengrafik, AEinNico, and CreepyX)
         - Cytosis (owned by Webhead1104 and Foxikle)
+        - TrainCraft (owned by IEatSystemFiles)
     */
 
     // Publicly hosted servers which primarily use Minestom
@@ -35,35 +45,40 @@ export const data: Category[] = [
                 description: "Play, create, share builds and parkour maps, all on one server!",
                 link: "https://hollowcube.net",
                 version: "26.1.2",
-                ip: "hollowcube.net"
+                ip: "hollowcube.net",
+                discord: discord("h9Z9DGGJjJ")
             },
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
                 link: "https://github.com/emortalmc",
                 version: "26.1.2",
-                ip: "mc.emortal.dev"
+                ip: "mc.emortal.dev",
+                discord: discord("qrgqe8hDmx")
             },
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
                 link: "https://cherry.pizza",
                 version: "1.21.11",
-                ip: "direct.cherry.pizza"
+                ip: "direct.cherry.pizza",
+                discord: discord("TNbyVSuaQh")
             },
             {
                 name: "kloon.io",
                 description: "A creative server developed by Minikloon featuring powerful building tools.",
                 link: "https://kloon.io",
                 version: "1.21.8",
-                ip: "play.kloon.io"
+                ip: "play.kloon.io",
+                discord: discord("peC3UVmZc6")
             },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
                 link: "https://bluedragonmc.com",
                 version: "1.21.11",
-                ip: "bluedragonmc.com"
+                ip: "bluedragonmc.com",
+                discord: discord("pYA7xxytYJ")
             },
             // {
             //     name: "Endercube",
@@ -77,13 +92,15 @@ export const data: Category[] = [
                 description: "A Speed Builders server featuring practice and competitive game modes.",
                 link: "https://www.tems.pl",
                 version: "1.21.11",
-                ip: "sb.tems.pl"
+                ip: "sb.tems.pl",
+                discord: discord("dkb2hCHV6A")
             },
             {
                 name: "Minecrement",
                 description: "A free-to-play idle gens server with automine, farming, and RPG elements.",
                 version: "26.1.1",
-                ip: "minecrement.minehut.gg"
+                ip: "minecrement.minehut.gg",
+                discord: discord("5Cx9njv7D6")
             }
         ]
     },
