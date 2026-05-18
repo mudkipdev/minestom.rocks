@@ -110,7 +110,7 @@ export const data: Category[] = [
             {
                 name: "Minecrement",
                 description: "A free-to-play idle gens server with automine, farming, and RPG elements.",
-                version: "26.1.1",
+                version: "26.1.2",
                 ip: "minecrement.minehut.gg",
                 discord: discord("5Cx9njv7D6")
             },
