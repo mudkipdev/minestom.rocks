@@ -229,7 +229,7 @@ export const data: Category[] = [
                 name: "minecraft-utils",
                 description: "A feature-rich Minestom library containing many examples.",
                 link: "https://github.com/tropicalshadow/minestom-utils",
-                version: "1.21.11"
+                version: "26.1.2"
             }
         ]
     },
