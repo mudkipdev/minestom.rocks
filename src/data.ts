@@ -133,7 +133,7 @@ export const data: Category[] = [
                 name: "MinestomPvP",
                 description: "A combat library with both 1.8 and modern PvP.",
                 link: "https://github.com/TogAr2/MinestomPvP",
-                version: "1.21.11"
+                version: "26.1.1"
             },
             {
                 name: "MinestomFluids",
@@ -145,19 +145,19 @@ export const data: Category[] = [
                 name: "Polar",
                 description: "A fast and small world format for Minestom.",
                 link: "https://github.com/hollow-cube/polar",
-                version: "1.21.11"
+                version: "26.1.2"
             },
             {
                 name: "Schem",
                 description: "A schematic reader and writer library for Minestom.",
                 link: "https://github.com/hollow-cube/schem",
-                version: "1.21.11"
+                version: "1.21.10"
             },
             {
                 name: "WorldSeedEntityEngine",
                 description: "Allows you to create advanced Bedrock-like multipart entities.",
                 link: "https://github.com/AtlasEngineCa/WorldSeedEntityEngine",
-                version: "1.21.10"
+                version: "1.21.11"
             },
             {
                 name: "AtlasProjectiles",
@@ -181,19 +181,19 @@ export const data: Category[] = [
                 name: "KotStom",
                 description: "Kotlinizes Minestom with extension functions and utilities.",
                 link: "https://github.com/bladehuntmc/KotStom",
-                version: "1.21.8"
+                version: "1.21.7"
             },
             {
                 name: "LuckPerms",
                 description: "A Minestom port of the popular permissions plugin.",
                 link: "https://github.com/LooFifteen/LuckPerms",
-                version: "1.21.8"
+                version: "1.21.11"
             },
             {
                 name: "Spark",
                 description: "A Minestom port of the popular Minecraft profiler.",
                 link: "https://github.com/LooFifteen/spark",
-                version: "1.21.4"
+                version: "1.21.11"
             },
             {
                 name: "Simple Voice Chat",
@@ -205,7 +205,7 @@ export const data: Category[] = [
                 name: "Terra",
                 description: "A popular world generation plugin which supports Minestom.",
                 link: "https://github.com/PolyhedralDev/Terra",
-                version: "1.21.10"
+                version: "1.21.8"
             },
             {
                 name: "NBStom",
@@ -217,13 +217,13 @@ export const data: Category[] = [
                 name: "Blocks and Stuff",
                 description: "Common block and fluid implementations for Minestom.",
                 link: "https://github.com/everbuild-org/blocks-and-stuff",
-                version: "1.21.10"
+                version: "26.1.2"
             },
             {
                 name: "minecraft-heads-minestom",
                 description: "Minecraft-Heads.com integration for Minestom.",
                 link: "https://github.com/everbuild-org/minecraft-heads-minestom",
-                version: "1.21.10"
+                version: "1.21.9"
             },
             {
                 name: "minecraft-utils",
@@ -287,13 +287,13 @@ export const data: Category[] = [
                 name: "Swofty's Skyblock",
                 description: "A recreation of Hypixel's Skyblock and Bed Wars game modes in Minestom.",
                 link: "https://github.com/Swofty-Developments/HypixelSkyBlock",
-                version: "1.21.11"
+                version: "26.1.2"
             },
             {
                 name: "CRAFT-8",
                 description: "A recreation of PICO-8 in Minestom using maps.",
                 link: "https://github.com/miberss/CRAFT-8",
-                version: "1.21.4"
+                version: "1.21.3"
             },
             {
                 name: "BlockPhysics",
