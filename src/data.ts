@@ -28,7 +28,7 @@ interface Category {
     items: (Item | Server)[];
 }
 
-export const latestVersion = "26.1.2";
+export const latestVersion = "26.2";
 export const supportsLatestVersion = (item: Item | Server): boolean =>
     item.version === latestVersion || !item.version;
 
@@ -51,7 +51,7 @@ export const data: Category[] = [
             {
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
-                version: "26.1.2",
+                version: "26.2",
                 ip: "hollowcube.net",
                 website: "https://hollowcube.net",
                 github: "https://github.com/hollow-cube",
@@ -60,7 +60,7 @@ export const data: Category[] = [
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
-                version: "26.1.2",
+                version: "26.2",
                 ip: "mc.emortal.dev",
                 github: "https://github.com/emortalmc",
                 discord: discord("qrgqe8hDmx")
@@ -85,7 +85,7 @@ export const data: Category[] = [
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
-                version: "1.21.11",
+                version: "26.2",
                 ip: "bluedragonmc.com",
                 website: "https://bluedragonmc.com",
                 github: "https://github.com/BlueDragonMC",
@@ -110,14 +110,14 @@ export const data: Category[] = [
             {
                 name: "Minecrement",
                 description: "A free-to-play idle gens server with automine, farming, and RPG elements.",
-                version: "26.1.2",
+                version: "26.2",
                 ip: "minecrement.minehut.gg",
                 discord: discord("5Cx9njv7D6")
             },
             {
                 name: "Fracture",
                 description: "A competitive minigames arena with leaderboards and high-stakes matches.",
-                version: "1.21.11",
+                version: "26.2",
                 ip: "playfracture.com",
                 website: "https://playfracture.com",
                 discord: discord("apcJbvmdNV")
@@ -229,7 +229,7 @@ export const data: Category[] = [
                 name: "minecraft-utils",
                 description: "A feature-rich Minestom library containing many examples.",
                 link: "https://github.com/tropicalshadow/minestom-utils",
-                version: "26.1.2"
+                version: "26.2"
             }
         ]
     },
@@ -287,7 +287,7 @@ export const data: Category[] = [
                 name: "Swofty's Skyblock",
                 description: "A recreation of Hypixel's Skyblock and Bed Wars game modes in Minestom.",
                 link: "https://github.com/Swofty-Developments/HypixelSkyBlock",
-                version: "26.1.2"
+                version: "26.2"
             },
             {
                 name: "CRAFT-8",
