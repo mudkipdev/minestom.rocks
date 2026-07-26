@@ -68,7 +68,7 @@ export const data: Category[] = [
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
-                version: "1.21.11",
+                version: "26.2",
                 ip: "direct.cherry.pizza",
                 website: "https://cherry.pizza",
                 discord: discord("TNbyVSuaQh")
