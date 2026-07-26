@@ -73,15 +73,15 @@ export const data: Category[] = [
                 website: "https://cherry.pizza",
                 discord: discord("TNbyVSuaQh")
             },
-            {
-                name: "kloon.io",
-                description: "A creative server developed by Minikloon featuring powerful building tools.",
-                version: "1.21.8",
-                ip: "play.kloon.io",
-                website: "https://kloon.io",
-                github: "https://github.com/KloonInnovations/GameServer-Public",
-                discord: discord("peC3UVmZc6")
-            },
+            // {
+            //     name: "kloon.io",
+            //     description: "A creative server developed by Minikloon featuring powerful building tools.",
+            //     version: "1.21.8",
+            //     ip: "play.kloon.io",
+            //     website: "https://kloon.io",
+            //     github: "https://github.com/KloonInnovations/GameServer-Public",
+            //     discord: discord("peC3UVmZc6")
+            // },
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
