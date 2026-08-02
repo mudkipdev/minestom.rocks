@@ -108,13 +108,6 @@ export const data: Category[] = [
                 discord: discord("dkb2hCHV6A")
             },
             {
-                name: "Minecrement",
-                description: "A free-to-play idle gens server with automine, farming, and RPG elements.",
-                version: "26.2",
-                ip: "minecrement.minehut.gg",
-                discord: discord("5Cx9njv7D6")
-            },
-            {
                 name: "Fracture",
                 description: "A competitive minigames arena with leaderboards and high-stakes matches.",
                 version: "26.2",
