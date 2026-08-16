@@ -114,6 +114,13 @@ export const data: Category[] = [
                 ip: "playfracture.com",
                 website: "https://playfracture.com",
                 discord: discord("apcJbvmdNV")
+            },
+            {
+                name: "Aechronis",
+                description: "A military nodes simulation server featuring towns, nations, wars, and colonization.",
+                version: "26.2",
+                ip: "play.aechronis.net",
+                website: "https://aechronis.net"
             }
         ]
     },
