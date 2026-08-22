@@ -42,6 +42,7 @@ export const data: Category[] = [
         - OledMC (owned by hapily, IP: oledmc.minehut.gg?)
         - WidowMC (owned by Pxblosky)
         - w77 (owned by Cody, IP: w77.gg)
+        - VibeRP (owned by Gravete)
     */
 
     // Publicly hosted servers which primarily use Minestom
@@ -114,6 +115,13 @@ export const data: Category[] = [
                 description: "A military nodes simulation server featuring towns, nations, wars, and colonization.",
                 ip: "play.aechronis.net",
                 website: "https://aechronis.net"
+            },
+            {
+                name: "Simple Kit Map",
+                description: "An open-source sandbox PvP server where you make your own kits, knockbacks, and maps.",
+                ip: "de.skm.ctt.cx",
+                github: "https://github.com/simple-kit-map/skom",
+                discord: discord("hNurcgJ3vS")
             }
         ]
     },
@@ -270,6 +278,12 @@ export const data: Category[] = [
     {
         title: "Miscellaneous",
         items: [
+            {
+                name: "Minestom Scratch",
+                description: "A stripped down version of Minestom where you own the control flow.",
+                link: "https://github.com/Minestom/Minestom/blob/master/demo/src/main/java/net/minestom/demo/Scratch.java",
+                version: "26.2"
+            },
             {
                 name: "minestom-ca",
                 description: "Implementing vanilla Minecraft with cellular automata.",

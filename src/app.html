@@ -1,23 +1,15 @@
----
-import "../style.css";
-
-interface Props {
-    title: string;
-}
-
-const { title } = Astro.props;
----
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="utf-8" />
         <link rel="icon" href="https://minestom.net/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="color-scheme" content="light dark" />
-        <title>{title}</title>
-        <slot name="meta" />
+        <meta name="theme-color" content="#FF6C32" />
+        %sveltekit.head%
     </head>
 
-    <body>
-        <slot />
+    <body data-sveltekit-preload-data="hover">
+        <div style="display: contents">%sveltekit.body%</div>
     </body>
 </html>

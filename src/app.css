@@ -1,0 +1,55 @@
+@import "tailwindcss";
+
+@theme inline {
+    --color-background: var(--background);
+    --color-foreground: var(--foreground);
+    --color-muted: var(--muted);
+    --color-link: var(--link);
+}
+
+@theme {
+    --color-card: oklch(0.551 0 0);
+}
+
+@layer base {
+    :root {
+        --background: #FFFFFF;
+        --foreground: #000000;
+        --muted: #888888;
+        --link: #0022FF;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        :root {
+            --background: #202020;
+            --foreground: #FFFFFF;
+            --muted: #777777;
+            --link: #5599FF;
+        }
+    }
+
+    body {
+        @apply mx-auto max-w-300 bg-background p-8 font-sans text-[19px] leading-normal text-foreground;
+
+        @media (max-width: 700px) {
+            @apply p-4!;
+        }
+    }
+
+    a,
+    a:visited {
+        color: var(--link);
+    }
+
+    h2 {
+        @apply my-[0.83em] text-[1.5em] leading-normal font-bold;
+    }
+
+    h3 {
+        @apply text-[1.17em] font-bold;
+    }
+
+    p {
+        @apply my-[1em];
+    }
+}

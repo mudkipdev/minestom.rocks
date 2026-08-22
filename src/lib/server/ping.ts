@@ -1,7 +1,7 @@
 import dns from "node:dns/promises";
 import net from "node:net";
 import { Buffer } from "node:buffer";
-import { data, type Server } from "./data";
+import { data, type Server } from "$lib/data";
 
 const PING_TIMEOUT = 5000;
 const REFRESH_INTERVAL = 120000;
@@ -57,15 +57,12 @@ interface StatusResponse {
     favicon?: string;
 }
 
-interface PingerState {
+export interface PingerState {
     statuses: Map<string, ServerStatus>;
+    icons: Map<string, string>;
     timer: ReturnType<typeof setInterval>;
     refreshing: boolean;
     ready: Promise<void>;
-}
-
-declare global {
-    var __minestomRocksPinger: PingerState | undefined;
 }
 
 const serverAddresses = data
@@ -231,34 +228,35 @@ function statusFromResponse(response: StatusResponse): PingResult {
     return status;
 }
 
-async function pingServer(address: string): Promise<ServerStatus> {
+async function pingServer(address: string, icons: Map<string, string>): Promise<ServerStatus> {
     const target = await resolveAddress(address);
 
-    const [native, modern] = await Promise.allSettled([
-        pingSocket(target.host, target.port, HANDSHAKE_PROTOCOL_VERSION),
-        pingSocket(target.host, target.port, LATEST_PROTOCOL)
-    ]);
-
-    const status = native.status === "fulfilled"
-        ? native.value
-        : modern.status === "fulfilled" ? modern.value : undefined;
+    const modern = await pingSocket(target.host, target.port, LATEST_PROTOCOL).catch(() => undefined);
+    const status = modern ?? await pingSocket(target.host, target.port, HANDSHAKE_PROTOCOL_VERSION).catch(() => undefined);
 
     if (!status || !LATEST_VERSION) return { online: false, checkedAt: Date.now() };
 
-    if (modern.status === "fulfilled" && modern.value.protocol === LATEST_PROTOCOL) {
+    if (status.protocol === LATEST_PROTOCOL) {
         status.version = LATEST_VERSION;
+    }
+
+    if (status.icon) {
+        icons.set(address, status.icon);
+    } else {
+        const cached = icons.get(address);
+        if (cached) status.icon = cached;
     }
 
     return status;
 }
 
-async function sweep(statuses: Map<string, ServerStatus>): Promise<void> {
+async function sweep(statuses: Map<string, ServerStatus>, icons: Map<string, string>): Promise<void> {
     const pending = [...statuses.keys()];
     const worker = async () => {
         while (pending.length > 0) {
             const address = pending.shift();
             if (address === undefined) break;
-            statuses.set(address, await pingServer(address));
+            statuses.set(address, await pingServer(address, icons));
         }
     };
 
@@ -269,7 +267,7 @@ async function refresh(state: PingerState): Promise<void> {
     if (state.refreshing) return;
     state.refreshing = true;
     try {
-        await sweep(state.statuses);
+        await sweep(state.statuses, state.icons);
     } finally {
         state.refreshing = false;
     }
@@ -281,11 +279,13 @@ export function initializePinger(): Promise<void> {
             online: false,
             checkedAt: 0
         } satisfies ServerStatus]));
+        const icons = new Map<string, string>();
         const state: PingerState = {
             statuses,
+            icons,
             timer: setInterval(() => void refresh(state), REFRESH_INTERVAL),
             refreshing: true,
-            ready: sweep(statuses).then(() => {
+            ready: sweep(statuses, icons).then(() => {
                 state.refreshing = false;
             })
         };

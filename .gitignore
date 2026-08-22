@@ -1,5 +1,5 @@
-dist/
-.astro/
+build/
+.svelte-kit/
 node_modules/
 .env
 .env.production
@@ -9,4 +9,4 @@ node_modules/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
-pnpm-debug.log*__pycache__/
+pnpm-debug.log*
