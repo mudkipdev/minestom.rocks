@@ -23,6 +23,7 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
             <ul>
                 {category.items.map((item, itemIndex) => {
                     const isServer = "ip" in item;
+
                     return (
                         <li
                             data-item-index={itemIndex}
@@ -34,7 +35,7 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
                                 <a href={item.link} target="_blank" rel="noopener noreferrer">{item.name}</a>
                             ) : (
                                 <span>{item.name}</span>
-                            )} - {item.description} {item.version ? <span style="color: #777777">({item.version})</span> : <Fragment />}
+                            )} - {item.description} {item.version ? <span style="color: var(--muted)">({item.version})</span> : <Fragment />}
                         </li>
                     );
                 })}
@@ -43,7 +44,7 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
     ))}
 
     <p id="footer">
-        Star the project on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub.</a>
+        Star the project on <a href="https://github.com/mudkipdev/minestom.rocks">GitHub</a>.
         Also try our <a href="/install">build script generator!</a>
     </p>
 </Page>
@@ -56,13 +57,7 @@ import { data, latestVersion, supportsLatestVersion } from "../data";
     #footer, #footer a {
         margin-top: 16px;
         margin-bottom: 32px;
-        color: #555555;
-    }
-
-    @media (prefers-color-scheme: dark) {
-        #footer, #footer a {
-            color: #666666;
-        }
+        color: var(--muted);
     }
 </style>
 

@@ -1,3 +1,20 @@
+:root {
+    color-scheme: light dark;
+    --background: #FFFFFF;
+    --foreground: #000000;
+    --muted: #888888;
+    --link: #0022FF;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --background: #222222;
+        --foreground: #FFFFFF;
+        --muted: #777777;
+        --link: #5599FF;
+    }
+}
+
 * {
     padding: 0;
     margin: 0;
@@ -5,17 +22,25 @@
 
 body {
     margin: auto;
-    max-width: 960px;
-    padding: 48px;
+    max-width: 1200px;
+    padding: 32px;
 
-    background: #FFFFFF;
+    background: var(--background);
+    color: var(--foreground);
+
     font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
     font-size: 19px;
     line-height: 1.5;
 }
 
+@media (max-width: 700px) {
+    body {
+        padding: 16px !important;
+    }
+}
+
 a, a:visited {
-    color: #0000EE;
+    color: var(--link);
 }
 
 input[type="checkbox"] {
@@ -29,20 +54,4 @@ ul {
 
 li {
     margin: 4px 0;
-}
-
-@media (max-width: 700px) {
-    body {
-        padding: 16px !important;
-    }
-}
-
-@media (prefers-color-scheme: dark) {
-    body {
-        background: #1C1B22;
-    }
-
-    a, a:visited {
-        color: #0090FF;
-    }
 }
