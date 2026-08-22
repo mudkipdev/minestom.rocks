@@ -29,8 +29,8 @@ interface Category {
 }
 
 export const latestVersion = "26.2";
-export const supportsLatestVersion = (item: Item | Server): boolean =>
-    item.version === latestVersion || !item.version;
+export const supportsLatestVersion = (version: string | undefined): boolean =>
+    version === undefined || version === latestVersion;
 
 export const data: Category[] = [
     /*
@@ -51,7 +51,6 @@ export const data: Category[] = [
             {
                 name: "Hollow Cube",
                 description: "Play, create, share builds and parkour maps, all on one server!",
-                version: "26.2",
                 ip: "hollowcube.net",
                 website: "https://hollowcube.net",
                 github: "https://github.com/hollow-cube",
@@ -60,7 +59,6 @@ export const data: Category[] = [
             {
                 name: "EmortalMC",
                 description: "A minigame network powered by Minestom with lots of overengineering.",
-                version: "26.2",
                 ip: "mc.emortal.dev",
                 github: "https://github.com/emortalmc",
                 discord: discord("qrgqe8hDmx")
@@ -68,7 +66,6 @@ export const data: Category[] = [
             {
                 name: "CounterMine",
                 description: "A Russian recreation of Counter Strike with insane custom models and GUIs.",
-                version: "26.2",
                 ip: "direct.cherry.pizza",
                 website: "https://cherry.pizza",
                 discord: discord("TNbyVSuaQh")
@@ -85,7 +82,6 @@ export const data: Category[] = [
             {
                 name: "BlueDragon",
                 description: "A minigame server that strives to produce high-quality original content.",
-                version: "26.2",
                 ip: "bluedragonmc.com",
                 website: "https://bluedragonmc.com",
                 github: "https://github.com/BlueDragonMC",
@@ -102,7 +98,6 @@ export const data: Category[] = [
             {
                 name: "sb.tems.pl",
                 description: "A Speed Builders server featuring practice and competitive game modes.",
-                version: "1.21.11",
                 ip: "sb.tems.pl",
                 website: "https://www.tems.pl",
                 discord: discord("dkb2hCHV6A")
@@ -110,7 +105,6 @@ export const data: Category[] = [
             {
                 name: "Fracture",
                 description: "A competitive minigames arena with leaderboards and high-stakes matches.",
-                version: "26.2",
                 ip: "playfracture.com",
                 website: "https://playfracture.com",
                 discord: discord("apcJbvmdNV")
@@ -118,7 +112,6 @@ export const data: Category[] = [
             {
                 name: "Aechronis",
                 description: "A military nodes simulation server featuring towns, nations, wars, and colonization.",
-                version: "26.2",
                 ip: "play.aechronis.net",
                 website: "https://aechronis.net"
             }
@@ -315,22 +308,31 @@ export const data: Category[] = [
     }
 ];
 
-data.forEach((category) => {
-    category.items.sort((left, right) => {
-        if (!left.version && right.version) return -1;
-        if (left.version && !right.version) return 1;
-        if (!left.version && !right.version) return 0;
+export const compareVersions = (left: string, right: string): number => {
+    const parseVersion = (version: string) => {
+        const parts = version.split(".").map(Number);
+        return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 };
+    };
 
-        const parseVersion = (version: string) => {
-            const parts = version.split('.').map(Number);
-            return { major: parts[0] || 0, minor: parts[1] || 0, patch: parts[2] || 0 };
-        };
+    const leftVersion = parseVersion(left);
+    const rightVersion = parseVersion(right);
 
-        const leftVersion = parseVersion(left.version || "");
-        const rightVersion = parseVersion(right.version || "");
+    if (rightVersion.major !== leftVersion.major) return rightVersion.major - leftVersion.major;
+    if (rightVersion.minor !== leftVersion.minor) return rightVersion.minor - leftVersion.minor;
+    return rightVersion.patch - leftVersion.patch;
+};
 
-        if (rightVersion.major !== leftVersion.major) return rightVersion.major - leftVersion.major;
-        if (rightVersion.minor !== leftVersion.minor) return rightVersion.minor - leftVersion.minor;
-        return rightVersion.patch - leftVersion.patch;
+export const sortItems = <T extends Item | Server>(
+    items: T[],
+    getVersion: (item: T) => string | undefined
+): T[] =>
+    [...items].sort((left, right) => {
+        const leftVersion = getVersion(left);
+        const rightVersion = getVersion(right);
+
+        if (!leftVersion && rightVersion) return -1;
+        if (leftVersion && !rightVersion) return 1;
+        if (!leftVersion || !rightVersion) return 0;
+
+        return compareVersions(leftVersion, rightVersion);
     });
-});

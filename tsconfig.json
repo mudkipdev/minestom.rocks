@@ -3,6 +3,7 @@
     "compilerOptions": {
         "baseUrl": ".",
         "types": [
+            "@types/node",
             "@types/wicg-file-system-access"
         ],
         "paths": {

@@ -7,16 +7,19 @@
         "dev": "astro dev",
         "build": "bun install && astro build",
         "preview": "astro preview",
+        "start": "node ./dist/server/entry.mjs",
         "astro": "astro"
     },
     "dependencies": {
         "@astrojs/check": "0.9.10",
+        "@astrojs/node": "^11.1.4",
         "astro": "7.2.4",
         "highlight.js": "^11.11.1",
         "shiki": "^4.0.2",
         "typescript": "^5.9.3"
     },
     "devDependencies": {
+        "@types/node": "^26.2.0",
         "@types/wicg-file-system-access": "^2023.10.7"
     }
 }
