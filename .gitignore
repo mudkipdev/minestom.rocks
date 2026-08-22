@@ -5,6 +5,7 @@ node_modules/
 .env.production
 .DS_Store
 .idea/
+.wrangler/
 
 npm-debug.log*
 yarn-debug.log*
