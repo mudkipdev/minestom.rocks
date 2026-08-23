@@ -114,7 +114,9 @@ export const data: Category[] = [
                 name: "Aechronis",
                 description: "A military nodes simulation server featuring towns, nations, wars, and colonization.",
                 ip: "play.aechronis.net",
-                website: "https://aechronis.net"
+                website: "https://aechronis.net",
+                github: "https://github.com/Aechronis/aechronis",
+                discord: discord("aechronis")
             },
             {
                 name: "Simple Kit Map",
