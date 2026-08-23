@@ -1,7 +1,14 @@
-import dns from "node:dns/promises";
-import net from "node:net";
 import { Buffer } from "node:buffer";
 import { data, type Server } from "$lib/data";
+
+type Connect = typeof import("cloudflare:sockets").connect;
+
+let connectFn: Promise<Connect> | undefined;
+
+function loadConnect(): Promise<Connect> {
+    connectFn ??= import("cloudflare:sockets").then((module) => module.connect);
+    return connectFn;
+}
 
 const PING_TIMEOUT = 5000;
 const REFRESH_INTERVAL = 120000;
@@ -57,6 +64,16 @@ interface StatusResponse {
     favicon?: string;
 }
 
+interface DohAnswer {
+    type: number;
+    data: string;
+}
+
+interface DohResponse {
+    Status?: number;
+    Answer?: DohAnswer[];
+}
+
 export interface PingerState {
     statuses: Map<string, ServerStatus>;
     icons: Map<string, string>;
@@ -98,84 +115,102 @@ function decodeVarInt(buffer: Buffer, offset: number): { value: number; offset: 
     }
 }
 
+async function resolveSrv(hostname: string): Promise<{ host: string; port: number }> {
+    const query = encodeURIComponent(`_minecraft._tcp.${hostname}`);
+    const response = await fetch(`https://cloudflare-dns.com/dns-query?name=${query}&type=SRV`, {
+        headers: { accept: "application/dns-json" }
+    });
+    if (!response.ok) throw new Error(`SRV lookup failed with status ${response.status}`);
+
+    const payload = await response.json() as DohResponse;
+    if (payload.Status !== 0 || !payload.Answer) throw new Error("No SRV records found");
+
+    const answer = payload.Answer.find((entry) => entry.type === 33);
+    const parts = answer?.data.trim().split(/\s+/);
+    if (!parts || parts.length < 4) throw new Error("Malformed SRV record");
+
+    return { host: parts[3].replace(/\.+$/, ""), port: Number(parts[2]) };
+}
+
 async function resolveAddress(address: string): Promise<{ host: string; port: number }> {
     const separator = address.indexOf(":");
     const hostname = separator === -1 ? address : address.substring(0, separator);
     const explicitPort = separator === -1 ? undefined : Number(address.substring(separator + 1));
 
     if (explicitPort === undefined) {
-        const records = await dns.resolveSrv(`_minecraft._tcp.${hostname}`).catch(() => []);
-        const record = records[0];
-        if (record) return { host: record.name, port: record.port };
+        const record = await resolveSrv(hostname).catch(() => undefined);
+        if (record && record.port > 0 && record.host.length > 0) return record;
     }
 
     return { host: hostname, port: explicitPort ?? DEFAULT_PORT };
 }
 
-function pingSocket(host: string, port: number, announcedProtocol: number): Promise<PingResult> {
-    return new Promise((resolve, reject) => {
-        const socket = net.createConnection({ host, port });
-        let received = Buffer.alloc(0);
-        let settled = false;
+function parseStatusPacket(received: Buffer): PingResult | undefined {
+    const length = decodeVarInt(received, 0);
+    if (length === undefined || received.length < length.offset + length.value) return undefined;
 
-        const fail = (error: Error) => {
-            if (settled) return;
-            settled = true;
-            socket.destroy();
-            reject(error);
-        };
+    const packet = received.subarray(length.offset, length.offset + length.value);
+    const packetId = decodeVarInt(packet, 0);
+    if (packetId === undefined || packetId.value !== 0) throw new Error("Unexpected status packet");
 
-        const complete = (status: PingResult) => {
-            if (settled) return;
-            settled = true;
-            socket.destroy();
-            resolve(status);
-        };
+    const payloadLength = decodeVarInt(packet, packetId.offset);
+    if (payloadLength === undefined) throw new Error("Malformed status response");
+    const payload = packet.subarray(payloadLength.offset, payloadLength.offset + payloadLength.value);
 
-        socket.setTimeout(PING_TIMEOUT);
-        socket.once("timeout", () => fail(new Error(`Timed out pinging ${host}:${port}`)));
-        socket.once("error", (error) => fail(error));
+    try {
+        return statusFromResponse(JSON.parse(payload.toString("utf8")) as StatusResponse);
+    } catch (error) {
+        throw error instanceof Error ? error : new Error("Invalid status response");
+    }
+}
 
-        socket.once("connect", () => {
-            const address = Buffer.from(host, "utf8");
-            const handshake = Buffer.concat([
-                encodeVarInt(0),
-                encodeVarInt(announcedProtocol),
-                encodeVarInt(address.length),
-                address,
-                Buffer.from([(port >> 8) & 0xff, port & 0xff]),
-                encodeVarInt(1)
-            ]);
-            const request = encodeVarInt(0);
+async function pingSocket(host: string, port: number, announcedProtocol: number): Promise<PingResult> {
+    const connect = await loadConnect();
+    const socket = connect({ hostname: host, port });
 
-            socket.write(Buffer.concat([encodeVarInt(handshake.length), handshake]));
-            socket.write(Buffer.concat([encodeVarInt(request.length), request]));
-        });
-
-        socket.on("data", (chunk: Buffer) => {
-            received = Buffer.concat([received, chunk]);
-            if (settled) return;
-
-            const length = decodeVarInt(received, 0);
-            if (length === undefined || received.length < length.offset + length.value) return;
-
-            const packet = received.subarray(length.offset, length.offset + length.value);
-            const packetId = decodeVarInt(packet, 0);
-            if (packetId === undefined || packetId.value !== 0) return fail(new Error("Unexpected status packet"));
-
-            const payloadLength = decodeVarInt(packet, packetId.offset);
-            if (payloadLength === undefined) return fail(new Error("Malformed status response"));
-            const payload = packet.subarray(payloadLength.offset, payloadLength.offset + payloadLength.value);
-
-            try {
-                complete(statusFromResponse(JSON.parse(payload.toString("utf8")) as StatusResponse));
-            } catch (error) {
-                fail(error instanceof Error ? error : new Error("Invalid status response"));
-            }
-        });
-
-        socket.once("close", () => fail(new Error("Connection closed before status response")));
+    let timer: ReturnType<typeof setTimeout> | undefined;
+    const timeout = new Promise<never>((_, reject) => {
+        timer = setTimeout(() => reject(new Error(`Timed out pinging ${host}:${port}`)), PING_TIMEOUT);
     });
+    const guarded = <T>(step: Promise<T>): Promise<T> => Promise.race([step, timeout]);
+
+    try {
+        await guarded(socket.opened);
+
+        const address = Buffer.from(host, "utf8");
+        const handshake = Buffer.concat([
+            encodeVarInt(0),
+            encodeVarInt(announcedProtocol),
+            encodeVarInt(address.length),
+            address,
+            Buffer.from([(port >> 8) & 0xff, port & 0xff]),
+            encodeVarInt(1)
+        ]);
+        const request = encodeVarInt(0);
+
+        const writer = socket.writable.getWriter();
+        await guarded(writer.write(Buffer.concat([
+            encodeVarInt(handshake.length),
+            handshake,
+            encodeVarInt(request.length),
+            request
+        ])));
+        writer.releaseLock();
+
+        const reader = socket.readable.getReader();
+        let received = Buffer.alloc(0);
+        let status = parseStatusPacket(received);
+        while (status === undefined) {
+            const chunk = await guarded(reader.read());
+            if (chunk.done) throw new Error("Connection closed before status response");
+            received = Buffer.concat([received, Buffer.from(chunk.value)]);
+            status = parseStatusPacket(received);
+        }
+        return status;
+    } finally {
+        clearTimeout(timer);
+        try { socket.close(); } catch {}
+    }
 }
 
 const versionPattern = /(\d+)\.(\d+)(?:\.(\d+))?/g;

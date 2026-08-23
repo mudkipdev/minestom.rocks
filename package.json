@@ -7,7 +7,7 @@
     "scripts": {
         "dev": "vite dev",
         "build": "bun install && vite build",
-        "preview": "vite build && wrangler dev .svelte-kit/cloudflare",
+        "preview": "vite build && wrangler pages dev .svelte-kit/cloudflare",
         "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json"
     },
     "devDependencies": {
