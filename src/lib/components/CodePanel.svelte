@@ -82,7 +82,7 @@
     });
 </script>
 
-<div class="flex min-w-0 grow flex-col overflow-hidden border-l border-[#D0D7DE] dark:border-[#30363D]">
+<div class="code-panel">
     <div class="flex gap-2 border-b border-[#D0D7DE] p-2 dark:border-[#30363D]">
         <button class="w-[300px] p-2" onclick={copy}>{copied ? "Copied!" : "Copy"}</button>
         <button class="w-[300px] p-2" onclick={save}>Save</button>
@@ -94,6 +94,28 @@
 </div>
 
 <style>
+    .code-panel {
+        display: flex;
+        min-width: 0;
+        flex: 1;
+        flex-direction: column;
+        overflow: hidden;
+        border-left: 1px solid #D0D7DE;
+    }
+
+    .code-panel button {
+        border: revert;
+        background: revert;
+        color: revert;
+        font: revert;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        .code-panel {
+            border-left-color: #30363D;
+        }
+    }
+
     #code :global(pre) {
         margin: 0;
         padding: 16px;

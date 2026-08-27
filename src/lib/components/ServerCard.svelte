@@ -17,7 +17,7 @@
     let copied = $state(false);
 
     const iconLinkClass = "relative group flex items-center justify-center rounded-md border border-card/40 p-1.5 text-foreground no-underline transition-colors hover:border-card/70";
-    const tooltipClass = "pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 -translate-x-1/2 rounded-md border border-card/30 bg-black/80 px-2 py-0.5 text-xs text-foreground whitespace-nowrap opacity-0 group-hover:opacity-100";
+    const tooltipClass = "pointer-events-none absolute bottom-full left-1/2 z-10 mb-1.5 -translate-x-1/2 rounded-md border border-card/30 bg-black/80 px-2 py-0.5 text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100";
 
     async function copy() {
         await navigator.clipboard.writeText(ip);
@@ -26,7 +26,7 @@
     }
 </script>
 
-<div class="flex flex-col rounded-lg border border-card/30 bg-card/5 p-4">
+<div class="flex flex-col gap-2 rounded-lg border border-card/30 bg-card/5 p-4">
     <div class="flex items-center gap-2.5">
         {#if status?.icon}
             <img class="size-8 shrink-0 rounded-sm object-contain [image-rendering:pixelated]" src={status.icon} alt="" />
@@ -37,23 +37,23 @@
         {#if status}
             {#if status.online}
                 {#if status.players}
-                    <span class="ml-auto rounded-sm bg-green-500/15 text-green-400 px-2 py-0.5 text-sm whitespace-nowrap">
+                    <span class="ml-auto rounded-sm bg-green-500/15 px-2 py-0.5 text-sm text-positive whitespace-nowrap">
                         {status.players.online} / {status.players.max}
                     </span>
                 {:else}
-                    <span class="ml-auto rounded-sm bg-green-500/15 text-green-400 px-2 py-0.5 text-sm whitespace-nowrap">Online</span>
+                    <span class="ml-auto rounded-sm bg-green-500/15 px-2 py-0.5 text-sm text-positive whitespace-nowrap">Online</span>
                 {/if}
             {:else}
-                <span class="ml-auto rounded-sm bg-card/15 text-white/50 px-2 py-0.5 text-sm whitespace-nowrap">Offline</span>
+                <span class="ml-auto rounded-sm bg-card/15 px-2 py-0.5 text-sm text-foreground/50 whitespace-nowrap">Offline</span>
             {/if}
         {/if}
     </div>
 
-    <p class="grow text-sm text-white/60">{description}</p>
+    <p class="server-description text-foreground/60">{description}</p>
 
     <div class="flex items-center justify-between gap-2">
         {#if version}
-            <span class="whitespace-nowrap text-white/60 text-sm">{version}</span>
+            <span class="text-foreground/60 text-sm whitespace-nowrap">{version}</span>
         {:else}
             <span></span>
         {/if}
@@ -91,7 +91,7 @@
             {/if}
 
             <button
-                class="grid place-items-center rounded-md border border-card/40 px-5 py-1 text-sm transition-colors {copied ? 'border-green-400 text-green-400' : 'hover:border-card/70'}"
+                class="grid place-items-center rounded-md border border-card/40 px-5 py-1 text-sm transition-colors {copied ? 'border-positive text-positive' : 'hover:border-card/70'}"
                 onclick={copy}
             >
                 <span class="[grid-area:1/1] {copied ? 'invisible' : ''}" aria-hidden={copied}>{ip}</span>
@@ -100,3 +100,9 @@
         </div>
     </div>
 </div>
+
+<style>
+    .server-description {
+        margin: 0;
+    }
+</style>

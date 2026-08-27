@@ -70,7 +70,15 @@
     <title>Installation</title>
 </svelte:head>
 
-<div class="fixed inset-0 flex overflow-hidden bg-background">
+<div class="install-container fixed inset-0 flex overflow-hidden bg-background">
     <GeneratorForm bind:dsl bind:language bind:group bind:mainClass bind:dependencies bind:logger />
     <CodePanel {code} {dsl} />
 </div>
+
+<style>
+    :global(body:has(.install-container)) {
+        max-width: none;
+        margin: 0;
+        padding: 0;
+    }
+</style>

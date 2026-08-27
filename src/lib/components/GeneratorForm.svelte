@@ -13,10 +13,10 @@
     let { dsl = $bindable(), language = $bindable(), group = $bindable(), mainClass = $bindable(), dependencies = $bindable(), logger = $bindable() }: Props = $props();
 </script>
 
-<div class="w-fit shrink-0 overflow-y-auto px-12 py-8 select-none">
+<div class="generator-form">
     <a href="/" class="mb-4 block">&larr; Back</a>
     <form onsubmit={(event) => event.preventDefault()}>
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Build Script</p>
+        <p>Build Script</p>
         <div>
             <input type="radio" value="kotlin" bind:group={dsl} id="dsl-kotlin" />
             <label for="dsl-kotlin">Gradle (Kotlin)</label>
@@ -30,7 +30,7 @@
             <label for="dsl-maven">Maven</label>
         </div>
 
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Language</p>
+        <p>Language</p>
         <div>
             <input type="radio" value="java" bind:group={language} id="language-java" />
             <label for="language-java">Java</label>
@@ -40,13 +40,13 @@
             <label for="language-kotlin">Kotlin</label>
         </div>
 
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Group</p>
+        <p>Group</p>
         <input type="text" bind:value={group} class="text-base" />
 
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Main Class</p>
+        <p>Main Class</p>
         <input type="text" bind:value={mainClass} class="text-base" />
 
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Dependencies</p>
+        <p>Dependencies</p>
         {#each Object.entries(optionalDependencies) as [key, dependency] (key)}
             <div>
                 <input type="checkbox" value={key} bind:group={dependencies} id={key} />
@@ -54,7 +54,7 @@
             </div>
         {/each}
 
-        <p class="mt-4 mb-[1em] font-bold first:mt-0">Logger</p>
+        <p>Logger</p>
         <div>
             <input type="radio" value="none" bind:group={logger} id="logger-none" />
             <label for="logger-none">None</label>
@@ -75,6 +75,28 @@
 </div>
 
 <style>
+    .generator-form {
+        flex: 0 0 fit-content;
+        padding: 32px 48px;
+        overflow-y: auto;
+        user-select: none;
+    }
+
+    form p {
+        margin-top: 16px;
+        margin-bottom: 0;
+        font-weight: bold;
+    }
+
+    form p:first-child {
+        margin-top: 0;
+    }
+
+    input[type="text"] {
+        border: 2px inset;
+        font-size: 16px;
+    }
+
     form div > input[type="radio"],
     form div > input[type="checkbox"] {
         transform: scale(1.2);

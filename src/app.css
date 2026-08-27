@@ -5,10 +5,8 @@
     --color-foreground: var(--foreground);
     --color-muted: var(--muted);
     --color-link: var(--link);
-}
-
-@theme {
-    --color-card: oklch(0.551 0 0);
+    --color-card: var(--card);
+    --color-positive: var(--positive);
 }
 
 @layer base {
@@ -17,6 +15,8 @@
         --foreground: #000000;
         --muted: #888888;
         --link: #0022FF;
+        --card: #808080;
+        --positive: #2da44e;
     }
 
     @media (prefers-color-scheme: dark) {
@@ -25,6 +25,8 @@
             --foreground: #FFFFFF;
             --muted: #777777;
             --link: #5599FF;
+            --card: #808080;
+            --positive: #3fb950;
         }
     }
 
